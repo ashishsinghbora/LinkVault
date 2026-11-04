@@ -1,0 +1,106 @@
+{
+  "username": "ashishsinghbora",
+  "profileUrl": "https://github.com/ashishsinghbora",
+  "lastUpdated": "2026-11-04T08:10:16.029Z",
+  "isFallback": false,
+  "repositories": [
+    {
+      "name": "LinkVault",
+      "fullName": "ashishsinghbora/LinkVault",
+      "description": "Open-source software and research repository.",
+      "url": "https://github.com/ashishsinghbora/LinkVault",
+      "language": "TypeScript",
+      "stars": 1,
+      "forks": 0,
+      "updatedAt": "2026-11-04T07:26:23Z"
+    },
+    {
+      "name": "Decentralized_App",
+      "fullName": "ashishsinghbora/Decentralized_App",
+      "description": "Mobile-first decentralized messaging app with DID identity, Matrix-compatible messaging, offline-first sync, privacy-focused cryptography, IPFS media, UPI payments, and multilingual support.",
+      "url": "https://github.com/ashishsinghbora/Decentralized_App",
+      "language": "TypeScript",
+      "stars": 14,
+      "forks": 0,
+      "updatedAt": "2026-11-02T05:39:27Z"
+    },
+    {
+      "name": "Project_Hub",
+      "fullName": "ashishsinghbora/Project_Hub",
+      "description": "SelfLearningML",
+      "url": "https://github.com/ashishsinghbora/Project_Hub",
+      "language": "Python",
+      "stars": 15,
+      "forks": 0,
+      "updatedAt": "2026-11-02T05:39:26Z"
+    },
+    {
+      "name": "EDA-Agent",
+      "fullName": "ashishsinghbora/EDA-Agent",
+      "description": "An industry-grade autonomous EDA & VLSI verification framework that automates the hardware workflow from RTL parsing and Verilator linting to Yosys synthesizability checking and closed-loop cocotb testbench self-repair.",
+      "url": "https://github.com/ashishsinghbora/EDA-Agent",
+      "language": "Python",
+      "stars": 15,
+      "forks": 4,
+      "updatedAt": "2026-11-02T05:39:21Z"
+    },
+    {
+      "name": "Portfolio",
+      "fullName": "ashishsinghbora/Portfolio",
+      "description": "This is my portfolio website ",
+      "url": "https://github.com/ashishsinghbora/Portfolio",
+      "language": "TypeScript",
+      "stars": 14,
+      "forks": 0,
+      "updatedAt": "2026-11-02T05:39:21Z"
+    },
+    {
+      "name": "pricloudspace",
+      "fullName": "ashishsinghbora/pricloudspace",
+      "description": "Open-source software and research repository.",
+      "url": "https://github.com/ashishsinghbora/pricloudspace",
+      "language": "Code",
+      "stars": 15,
+      "forks": 0,
+      "updatedAt": "2026-11-02T05:39:20Z"
+    }
+  ],
+  "recentEvents": [
+    {
+      "type": "WatchEvent",
+      "repo": "ashishsinghbora/LinkVault",
+      "message": "Starred repository",
+      "timestamp": "2026-11-04T06:04:42Z"
+    },
+    {
+      "type": "WatchEvent",
+      "repo": "MoRtiX07/holohistory",
+      "message": "Starred repository",
+      "timestamp": "2026-11-04T04:50:36Z"
+    },
+    {
+      "type": "WatchEvent",
+      "repo": "StatIndet/quickshell",
+      "message": "Starred repository",
+      "timestamp": "2026-11-03T12:44:59Z"
+    },
+    {
+      "type": "WatchEvent",
+      "repo": "AryanXCode646/Neuro_chip_ar",
+      "message": "Starred repository",
+      "timestamp": "2026-11-03T04:03:50Z"
+    },
+    {
+      "type": "CreateEvent",
+      "repo": "ashishsinghbora/MailRadar",
+      "message": "Created branch main",
+      "timestamp": "2026-10-31T15:56:03Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ashishsinghbora/MailRadar",
+      "message": "Public GitHub activity",
+      "timestamp": "2026-10-31T17:32:25Z"
+    }
+  ]
+}

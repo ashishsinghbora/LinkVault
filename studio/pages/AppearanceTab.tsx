@@ -13,16 +13,16 @@ interface AppearanceTabProps {
 }
 
 const ACCENT_OPTIONS: { id: AccentColor; label: string; color: string; desc: string }[] = [
-  { id: 'emerald', label: 'Genesis Emerald', color: '#06A679', desc: 'Deep atmospheric lighting & glow' },
-  { id: 'violet', label: 'Signal Violet', color: '#7C5CF5', desc: 'Secondary cyber-violet accent' },
+  { id: 'violet', label: 'Observatory Violet', color: '#A855F7', desc: 'Electric violet & deep purple telemetry' },
+  { id: 'cyan', label: 'Observatory Cyan', color: '#22D3EE', desc: 'Bright cyan orbital rings and nodes' },
+  { id: 'emerald', label: 'Genesis Emerald', color: '#06A679', desc: 'Deep atmospheric green & emerald glow' },
   { id: 'mint', label: 'Electric Mint', color: '#00f59b', desc: 'High-signal terminal green' },
-  { id: 'cyan', label: 'Cyan Cyber', color: '#00e5ff', desc: 'Technical blueprint cyan' },
   { id: 'amber', label: 'Amber Telemetry', color: '#f59e0b', desc: 'Vintage telemetry amber' },
 ];
 
 const BACKGROUND_OPTIONS: { id: BackgroundStyle; label: string; desc: string }[] = [
-  { id: 'deep-space', label: 'Deep Space (Void)', desc: 'Near-black #05070D canvas with layered depth' },
-  { id: 'orbital-glow', label: 'Orbital Glow', desc: 'Emerald and violet layered ambient radial lighting' },
+  { id: 'deep-space', label: 'Digital Observatory (Void)', desc: 'Near-black #07070D canvas with layered depth' },
+  { id: 'orbital-glow', label: 'Observatory Radial Glow', desc: 'Violet and cyan layered ambient radial lighting' },
   { id: 'technical-grid', label: 'Technical Grid', desc: '32px precision coordinate alignment grid' },
   { id: 'dots', label: 'Matrix Dots', desc: '20px radial dot pattern' },
   { id: 'minimal', label: 'Minimal Flat', desc: 'Clean distraction-free dark canvas' },

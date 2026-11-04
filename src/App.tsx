@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import profileDataRaw from './data/profile.json';
 import { validateProfile, sanitizeProfileData, DEFAULT_PROFILE } from './lib/schema';
 import type { ProfileData, LinkItem, ProjectItem } from './types/profile';
@@ -9,6 +9,8 @@ import { ProfileHero } from './components/profile/ProfileHero';
 import { FeaturedSection } from './components/links/FeaturedSection';
 import { LinkCollections } from './components/links/LinkCollections';
 import { ProjectShowcase } from './components/projects/ProjectShowcase';
+import { SkillsConstellation } from './components/skills/SkillsConstellation';
+import { GitHubActivitySection } from './components/github/GitHubActivitySection';
 import { MediaSection } from './components/media/MediaSection';
 import { CertificationsSection } from './components/profile/CertificationsSection';
 import { EducationSection } from './components/profile/EducationSection';
@@ -16,6 +18,8 @@ import { ContactSection } from './components/profile/ContactSection';
 import { SearchBar } from './components/shared/SearchBar';
 import { ShareModal } from './components/shared/ShareModal';
 import { PrivacyModal } from './components/shared/PrivacyModal';
+import { CommandPalette } from './components/shared/CommandPalette';
+import { CustomCursor } from './components/shared/CustomCursor';
 
 export function App() {
   // Validate and parse raw profile json safely
@@ -30,13 +34,27 @@ export function App() {
 
   const { themeMode, toggleTheme, background } = useTheme(
     profileData.appearance?.defaultTheme || 'dark',
-    profileData.appearance?.accentColor || 'mint',
-    profileData.appearance?.backgroundStyle || 'technical-grid'
+    profileData.appearance?.accentColor || 'violet',
+    profileData.appearance?.backgroundStyle || 'deep-space'
   );
 
   const [searchQuery, setSearchQuery] = useState('');
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+
+  // Global keyboard shortcut for Command Palette (Ctrl+K or Cmd+K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Sync document title and metadata
   useEffect(() => {
@@ -75,7 +93,7 @@ export function App() {
       case 'deep-space':
         return 'bg-void';
       case 'orbital-glow':
-        return 'bg-void bg-radial-emerald bg-no-repeat bg-[center_top_10%]';
+        return 'bg-void bg-radial-violet bg-no-repeat bg-[center_top_10%]';
       case 'technical-grid':
         return 'bg-grid-pattern dark:bg-grid-pattern light:bg-grid-pattern-light bg-grid-size';
       case 'dots':
@@ -88,16 +106,21 @@ export function App() {
     }
   };
 
+  const handleOpenCommandPalette = useCallback(() => {
+    setCommandPaletteOpen(true);
+  }, []);
+
   return (
-    <div className={`min-h-screen w-full max-w-full overflow-x-hidden bg-signal-950 dark:bg-signal-950 light:bg-slate-50 text-signal-100 dark:text-signal-100 light:text-slate-900 transition-colors duration-200 selection:bg-mint-500/30 selection:text-mint-300 ${getBackgroundClass()}`}>
+    <div className={`min-h-screen w-full max-w-full overflow-x-hidden bg-signal-950 dark:bg-signal-950 light:bg-slate-50 text-signal-100 dark:text-signal-100 light:text-slate-900 transition-colors duration-200 selection:bg-violet-deep selection:text-cyan-300 ${getBackgroundClass()}`}>
       {/* Decorative Technical Top Accent Line */}
-      <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-mint-400 to-transparent opacity-80" />
+      <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-violet-electric to-transparent opacity-80" />
 
       {/* Navigation Header */}
       <Navbar
         themeMode={themeMode}
         onToggleTheme={toggleTheme}
         onOpenShare={() => setShareModalOpen(true)}
+        onOpenCommandPalette={handleOpenCommandPalette}
         brandTitle="LINKVAULT"
       />
 
@@ -130,7 +153,13 @@ export function App() {
           searchQuery={searchQuery}
         />
 
-        {/* Media & YouTube Transmissions */}
+        {/* Interactive Skills Visualization Constellation */}
+        {!searchQuery && <SkillsConstellation />}
+
+        {/* GitHub Developer Activity & Repositories Telemetry */}
+        {!searchQuery && <GitHubActivitySection />}
+
+        {/* Media & YouTube Transmissions (Techie Ashish) */}
         {!searchQuery && profileData.mediaSections && profileData.mediaSections.length > 0 && (
           <MediaSection sections={profileData.mediaSections} />
         )}
@@ -178,6 +207,19 @@ export function App() {
         isOpen={privacyModalOpen}
         onClose={() => setPrivacyModalOpen(false)}
       />
+
+      {/* Command Palette (Ctrl+K / Cmd+K) */}
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
+        profileData={profileData}
+        themeMode={themeMode}
+        onToggleTheme={toggleTheme}
+        onOpenShare={() => setShareModalOpen(true)}
+      />
+
+      {/* Desktop Custom Cursor */}
+      <CustomCursor />
     </div>
   );
 }

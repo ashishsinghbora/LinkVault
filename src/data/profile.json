@@ -329,7 +329,7 @@
   ],
   "appearance": {
     "defaultTheme": "dark",
-    "accentColor": "emerald",
+    "accentColor": "violet",
     "backgroundStyle": "deep-space",
     "cardStyle": "bordered",
     "scene3d": {
@@ -346,7 +346,7 @@
     }
   },
   "metadata": {
-    "title": "Ashish Singh Bora | Digital Signal Deck",
+    "title": "Ashish Singh Bora | The Digital Observatory — LinkVault",
     "description": "CS & Engineering undergraduate focused on systems engineering, Linux, computer vision, AI/ML and open-source software.",
     "canonicalUrl": "https://ashishsinghbora.github.io/LinkVault",
     "ogImage": "/og-image.svg",

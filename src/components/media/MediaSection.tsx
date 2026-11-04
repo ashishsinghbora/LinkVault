@@ -74,6 +74,7 @@ export function MediaSection({ sections }: MediaSectionProps) {
         return (
           <section
             key={section.id}
+            id="media-section"
             aria-labelledby={`media-heading-${section.id}`}
             className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
           >

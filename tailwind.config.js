@@ -10,26 +10,38 @@ export default {
   theme: {
     extend: {
       colors: {
-        void: "#05070D",
+        void: "#07070D", // Digital Observatory Near-black
         surface: {
-          DEFAULT: "#0B1018",
-          raised: "#101925",
-          overlay: "#162233",
+          DEFAULT: "#10101A", // Dark graphite
+          raised: "#171625",  // Elevated surface
+          overlay: "#1f1e33",
+        },
+        observatory: {
+          bg: "#07070D",
+          graphite: "#10101A",
+          surface: "#171625",
+          violet: "#6D28D9",
+          electric: "#A855F7",
+          cyan: "#22D3EE",
+          cyanLight: "#67E8F9",
+          text: "#F7F5FF",
+          secondary: "#AAA7BC",
+          muted: "#777489",
         },
         signal: {
-          950: "#05070D", // Deep near-black background
-          900: "#0B1018", // Surface
-          850: "#101925", // Raised surface
-          800: "#162233",
-          750: "#1d2b40",
-          700: "#273a55",
-          600: "#3d5575",
-          500: "#5d7799",
-          400: "#8ca2bd",
-          300: "#b9c9dc",
-          200: "#dce5f0",
-          100: "#F1F5F6", // Primary text
-          50: "#f8fafc",
+          950: "#07070D", // Deep near-black background
+          900: "#10101A", // Dark graphite surface
+          850: "#171625", // Elevated surface
+          800: "#1f1e33",
+          750: "#272540",
+          700: "#363359",
+          600: "#524d80",
+          500: "#777489", // Muted text
+          400: "#AAA7BC", // Secondary text
+          300: "#cfcce3",
+          200: "#e5e3f5",
+          100: "#F7F5FF", // Primary text
+          50: "#fdfcff",
         },
         emerald: {
           DEFAULT: "#06A679",
@@ -39,9 +51,10 @@ export default {
           deep: "#022c22",
         },
         violet: {
-          DEFAULT: "#7C5CF5",
+          DEFAULT: "#6D28D9",
+          electric: "#A855F7",
           lavender: "#A78BFA",
-          glow: "#8b5cf6",
+          glow: "#A855F7",
           dark: "#5b21b6",
           deep: "#2e1065",
         },
@@ -56,7 +69,7 @@ export default {
           300: "#67e8f9",
           400: "#22d3ee",
           500: "#06b6d4",
-          glow: "#00e5ff",
+          glow: "#22d3ee",
           deep: "#164e63",
         },
         amber: {

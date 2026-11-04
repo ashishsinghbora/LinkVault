@@ -42,6 +42,9 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
+      - name: Fetch GitHub activity telemetry snapshot
+        run: node scripts/fetch-github-activity.js || true
+
       - name: Build static site for production
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}

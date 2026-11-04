@@ -14,7 +14,8 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
-    "validate": "node scripts/validate-profile.js"
+    "validate": "node scripts/validate-profile.js",
+    "fetch:github": "node scripts/fetch-github-activity.js"
   },
   "keywords": [
     "linkvault",

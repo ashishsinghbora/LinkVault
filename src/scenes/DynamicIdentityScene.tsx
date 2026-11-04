@@ -22,13 +22,18 @@ export const DynamicIdentityScene: React.FC<DynamicIdentitySceneProps> = ({
         setHasWebGl(false);
         return;
       }
-      // Check if WebGLRenderingContext exists in global window
+      // Check if WebGL context exists in window
       if (typeof window.WebGLRenderingContext === 'undefined') {
         setHasWebGl(false);
         return;
       }
-      const canvas = document.createElement('canvas');
-      const gl = canvas.getContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+      // Test WebGL capability on an isolated scratch canvas to avoid locking the real canvas
+      const scratch = document.createElement('canvas');
+      const gl = scratch.getContext && (
+        scratch.getContext('webgl2') ||
+        scratch.getContext('webgl') ||
+        scratch.getContext('experimental-webgl')
+      );
       setHasWebGl(!!gl);
     } catch {
       setHasWebGl(false);

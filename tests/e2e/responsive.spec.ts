@@ -5,7 +5,9 @@ import fs from 'node:fs';
 const VIEWPORTS = [
   { name: 'phone-320', width: 320, height: 700 },
   { name: 'phone-360', width: 360, height: 800 },
+  { name: 'phone-375', width: 375, height: 667 },
   { name: 'phone-390', width: 390, height: 844, isScreenshot: true },
+  { name: 'phone-412', width: 412, height: 915 },
   { name: 'phone-430', width: 430, height: 932 },
   { name: 'tablet-768', width: 768, height: 1024, isScreenshot: true },
   { name: 'tablet-1024', width: 1024, height: 768 },
@@ -49,7 +51,7 @@ test.describe('Responsive Layout & No Horizontal Overflow', () => {
   }
 });
 
-test.describe('Interactive Features', () => {
+test.describe('Interactive Features & Digital Observatory', () => {
   test('theme switcher toggles dark and light mode', async ({ page }) => {
     await page.goto('/');
     const html = page.locator('html');
@@ -83,6 +85,53 @@ test.describe('Interactive Features', () => {
     await expect(page.locator('text=Techie Ashish').first()).toBeVisible();
     await expect(page.locator('text=Financial Education for Young Citizens').first()).toBeVisible();
     await expect(page.locator('text=Uttarakhand Technical University').first()).toBeVisible();
+  });
+
+  test('command palette opens via keyboard Ctrl+K and filters destinations', async ({ page }) => {
+    await page.goto('/');
+
+    // Click search trigger in navbar or press Control+k
+    const triggerBtn = page.locator('header button[aria-label*="Command Palette"]');
+    await triggerBtn.click();
+
+    const dialog = page.locator('div[role="dialog"][aria-label="LinkVault Command Palette"]');
+    await expect(dialog).toBeVisible();
+
+    // Type query
+    const input = dialog.locator('input');
+    await input.fill('projects');
+
+    await expect(dialog.getByText('Engineering Projects')).toBeVisible();
+
+    // Press Escape to close
+    await page.keyboard.press('Escape');
+    await expect(dialog).not.toBeVisible();
+  });
+
+  test('skills constellation displays domains and toggles accessible table', async ({ page }) => {
+    await page.goto('/');
+
+    const skillsSection = page.locator('#skills-section');
+    await expect(skillsSection).toBeVisible();
+    await expect(skillsSection.getByText('Engineering & Technical Domain Map')).toBeVisible();
+
+    // Click toggle button
+    const toggleBtn = skillsSection.locator('button:has-text("Accessible Table View")');
+    await toggleBtn.click();
+
+    // Table view should now be displayed
+    await expect(skillsSection.locator('table')).toBeVisible();
+    await expect(skillsSection.getByText('Domain Area')).toBeVisible();
+  });
+
+  test('github activity telemetry section displays repositories and commits', async ({ page }) => {
+    await page.goto('/');
+
+    const ghSection = page.locator('#github-activity-section');
+    await expect(ghSection).toBeVisible();
+    await expect(ghSection.getByText('Developer Activity & Repositories')).toBeVisible();
+    await expect(ghSection.getByText('Public Repositories')).toBeVisible();
+    await expect(ghSection.getByText('Telemetry & Commit Stream')).toBeVisible();
   });
 
   test('share modal opens with QR canvas and closes cleanly', async ({ page }) => {

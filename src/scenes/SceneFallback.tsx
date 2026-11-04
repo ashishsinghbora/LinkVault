@@ -1,55 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Compass, ArrowUpRight } from 'lucide-react';
+import type { SpatialNodeDef } from './spatialNodes';
 
 interface SceneFallbackProps {
   interactive?: boolean;
+  onNodeClick?: (nodeId: string) => void;
 }
 
-export const SceneFallback: React.FC<SceneFallbackProps> = () => {
+export const SceneFallback: React.FC<SceneFallbackProps> = ({
+  interactive = true,
+  onNodeClick,
+}) => {
+  const [activeNode, setActiveNode] = useState<SpatialNodeDef | null>(null);
+
+  const handleNavigate = (node: SpatialNodeDef) => {
+    setActiveNode(node);
+    if (onNodeClick) {
+      onNodeClick(node.id);
+    }
+    const targetElement = document.getElementById(node.targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try {
+        window.history.pushState(null, '', `#${node.targetId}`);
+      } catch {
+        // ignore
+      }
+    }
+  };
+
   return (
     <div
-      className="relative w-full h-[360px] sm:h-[420px] md:h-[480px] flex items-center justify-center select-none overflow-hidden"
-      aria-label="Digital Identity Core visual representation"
+      className="relative w-full h-[360px] sm:h-[430px] md:h-[490px] flex items-center justify-center select-none overflow-hidden"
+      aria-label="Digital Observatory Constellation & Spatial Navigation Map"
     >
-      {/* Background ambient radial glow layers */}
+      {/* Background ambient radial glow layers (Violet & Cyan) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[320px] h-[320px] rounded-full bg-emerald-500/15 blur-[80px] animate-pulse-glow" />
-        <div className="w-[280px] h-[280px] rounded-full bg-violet-600/15 blur-[70px] animate-pulse-glow [animation-delay:2s]" />
+        <div className="w-[340px] h-[340px] rounded-full bg-violet-600/15 blur-[90px] animate-pulse-glow" />
+        <div className="w-[280px] h-[280px] rounded-full bg-cyan-400/15 blur-[80px] animate-pulse-glow [animation-delay:2s]" />
       </div>
 
       {/* SVG Orbital Rings and Constellation Structure */}
       <svg
         viewBox="0 0 500 500"
-        className="w-full h-full max-w-[460px] max-h-[460px] z-10"
+        className="w-full h-full max-w-[480px] max-h-[480px] z-10"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
         <defs>
-          <linearGradient id="orbit-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06A679" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#06A679" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#00f59b" stopOpacity="0.7" />
-          </linearGradient>
           <linearGradient id="orbit-violet" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7C5CF5" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#A78BFA" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#7C5CF5" stopOpacity="0.6" />
+            <stop offset="0%" stopColor="#6D28D9" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#A855F7" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#6D28D9" stopOpacity="0.7" />
           </linearGradient>
-          <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#06A679" stopOpacity="0.9" />
-            <stop offset="40%" stopColor="#0B1018" stopOpacity="0.95" />
-            <stop offset="100%" stopColor="#05070D" stopOpacity="1" />
-          </radialGradient>
-          <radialGradient id="node-glow-emerald" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00f59b" />
-            <stop offset="100%" stopColor="#06A679" stopOpacity="0" />
-          </radialGradient>
-          <radialGradient id="node-glow-violet" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#A78BFA" />
-            <stop offset="100%" stopColor="#7C5CF5" stopOpacity="0" />
+          <linearGradient id="orbit-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#67E8F9" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#0891B2" stopOpacity="0.7" />
+          </linearGradient>
+          <radialGradient id="core-glow-obs" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#A855F7" stopOpacity="0.85" />
+            <stop offset="45%" stopColor="#10101A" stopOpacity="0.95" />
+            <stop offset="100%" stopColor="#07070D" stopOpacity="1" />
           </radialGradient>
         </defs>
 
-        {/* Outer Ring 1 - Emerald */}
+        {/* Ring 1 - Inner Violet Ring */}
         <g className="animate-orbital-spin origin-[250px_250px]">
           <ellipse
             cx="250"
@@ -57,36 +74,36 @@ export const SceneFallback: React.FC<SceneFallbackProps> = () => {
             rx="210"
             ry="75"
             transform="rotate(-25 250 250)"
-            stroke="url(#orbit-emerald)"
+            stroke="url(#orbit-violet)"
             strokeWidth="1.5"
             strokeDasharray="6 8"
           />
-          {/* Orbital Node: GitHub */}
-          <circle cx="85" cy="180" r="4.5" fill="#00f59b" filter="drop-shadow(0 0 6px #06A679)" />
-          {/* Orbital Node: Projects */}
-          <circle cx="415" cy="320" r="4" fill="#00f59b" filter="drop-shadow(0 0 6px #06A679)" />
+          {/* Identity Node */}
+          <circle cx="85" cy="180" r="4.5" fill="#A855F7" filter="drop-shadow(0 0 6px #A855F7)" />
+          {/* Projects Node */}
+          <circle cx="415" cy="320" r="4.5" fill="#22D3EE" filter="drop-shadow(0 0 6px #22D3EE)" />
         </g>
 
-        {/* Middle Ring 2 - Violet */}
+        {/* Ring 2 - Middle Cyan Ring */}
         <g className="animate-orbital-spin-reverse origin-[250px_250px]">
           <ellipse
             cx="250"
             cy="250"
-            rx="180"
+            rx="175"
             ry="65"
             transform="rotate(35 250 250)"
-            stroke="url(#orbit-violet)"
+            stroke="url(#orbit-cyan)"
             strokeWidth="1.5"
             strokeDasharray="4 6"
           />
-          {/* Orbital Node: LinkedIn */}
-          <circle cx="390" cy="190" r="4" fill="#A78BFA" filter="drop-shadow(0 0 6px #7C5CF5)" />
-          {/* Orbital Node: Research */}
-          <circle cx="110" cy="310" r="3.5" fill="#A78BFA" filter="drop-shadow(0 0 6px #7C5CF5)" />
+          {/* Research Node */}
+          <circle cx="385" cy="190" r="4" fill="#8B5CF6" filter="drop-shadow(0 0 6px #8B5CF6)" />
+          {/* Activity Node */}
+          <circle cx="115" cy="310" r="4" fill="#67E8F9" filter="drop-shadow(0 0 6px #67E8F9)" />
         </g>
 
-        {/* Inner Ring 3 - Equatorial */}
-        <g className="animate-orbital-spin origin-[250px_250px] [animation-duration:18s]">
+        {/* Ring 3 - Outer Observatory Ring */}
+        <g className="animate-orbital-spin origin-[250px_250px] [animation-duration:36s]">
           <ellipse
             cx="250"
             cy="250"
@@ -96,50 +113,75 @@ export const SceneFallback: React.FC<SceneFallbackProps> = () => {
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth="1"
           />
-          {/* Orbital Node: Portfolio */}
-          <circle cx="360" cy="245" r="3.5" fill="#00e5ff" filter="drop-shadow(0 0 4px #00e5ff)" />
-          {/* Orbital Node: YouTube */}
-          <circle cx="140" cy="255" r="3.5" fill="#f43f5e" filter="drop-shadow(0 0 4px #f43f5e)" />
+          {/* Media Node */}
+          <circle cx="360" cy="245" r="3.5" fill="#F43F5E" filter="drop-shadow(0 0 4px #F43F5E)" />
+          {/* Credentials Node */}
+          <circle cx="140" cy="255" r="3.5" fill="#FBBF24" filter="drop-shadow(0 0 4px #FBBF24)" />
         </g>
 
-        {/* Laser Ray Connectors */}
-        <line x1="250" y1="250" x2="85" y2="180" stroke="rgba(6, 166, 121, 0.25)" strokeWidth="0.8" />
-        <line x1="250" y1="250" x2="390" y2="190" stroke="rgba(124, 92, 245, 0.25)" strokeWidth="0.8" />
-        <line x1="250" y1="250" x2="415" y2="320" stroke="rgba(6, 166, 121, 0.25)" strokeWidth="0.8" />
-        <line x1="250" y1="250" x2="110" y2="310" stroke="rgba(124, 92, 245, 0.25)" strokeWidth="0.8" />
+        {/* Connector Lines to Nucleus */}
+        <line x1="250" y1="250" x2="85" y2="180" stroke="rgba(168, 85, 247, 0.25)" strokeWidth="1" />
+        <line x1="250" y1="250" x2="415" y2="320" stroke="rgba(34, 211, 238, 0.25)" strokeWidth="1" />
+        <line x1="250" y1="250" x2="385" y2="190" stroke="rgba(139, 92, 246, 0.25)" strokeWidth="1" />
+        <line x1="250" y1="250" x2="115" y2="310" stroke="rgba(103, 232, 249, 0.25)" strokeWidth="1" />
 
-        {/* Central Core Sphere */}
-        <circle cx="250" cy="250" r="44" fill="url(#core-glow)" stroke="rgba(6, 166, 121, 0.5)" strokeWidth="1.5" />
-        <circle cx="250" cy="250" r="36" fill="#0B1018" stroke="rgba(167, 139, 250, 0.4)" strokeWidth="1" strokeDasharray="3 3" />
-        <circle cx="250" cy="250" r="14" fill="#06A679" filter="drop-shadow(0 0 12px #00f59b)" opacity="0.9" />
-
-        {/* Monogram AS inside core */}
-        <text
-          x="250"
-          y="254"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fill="#F1F5F6"
-          fontSize="11"
-          fontFamily="'JetBrains Mono', monospace"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-        >
-          AS
-        </text>
-
-        {/* Floating tech crosshairs */}
-        <line x1="250" y1="180" x2="250" y2="192" stroke="rgba(6, 166, 121, 0.4)" strokeWidth="1" />
-        <line x1="250" y1="308" x2="250" y2="320" stroke="rgba(6, 166, 121, 0.4)" strokeWidth="1" />
-        <line x1="180" y1="250" x2="192" y2="250" stroke="rgba(124, 92, 245, 0.4)" strokeWidth="1" />
-        <line x1="308" y1="250" x2="320" y2="250" stroke="rgba(124, 92, 245, 0.4)" strokeWidth="1" />
+        {/* Central Core */}
+        <circle cx="250" cy="250" r="54" fill="url(#core-glow-obs)" stroke="rgba(168, 85, 247, 0.5)" strokeWidth="1.5" />
+        <polygon
+          points="250,210 285,230 285,270 250,290 215,270 215,230"
+          fill="none"
+          stroke="#22D3EE"
+          strokeWidth="1.2"
+          opacity="0.75"
+        />
+        <circle cx="250" cy="250" r="16" fill="#A855F7" opacity="0.9" filter="drop-shadow(0 0 10px #A855F7)" />
       </svg>
 
-      {/* Status indicator bottom badge */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-full bg-surface/80 border border-white/10 backdrop-blur-md text-[10px] font-mono text-signal-400">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-glow animate-pulse" />
-        <span>IDENTITY CORE // ONLINE</span>
+      {/* Top Observatory HUD */}
+      <div className="absolute top-2 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+        <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface/90 border border-white/10 backdrop-blur-md text-[10px] font-mono text-signal-300">
+          <Compass className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="tracking-widest uppercase">CONSTELLATION OBSERVATORY // 7 NODES</span>
+        </div>
       </div>
+
+      {/* Bottom Interactive Node Status Bar */}
+      {interactive && (
+        <div className="absolute bottom-2 left-4 right-4 z-20 flex flex-col items-center gap-2">
+          <div className="max-w-md w-full px-3.5 py-2 rounded-xl bg-surface/90 border border-white/10 backdrop-blur-md shadow-glass-card text-center">
+            {activeNode ? (
+              <div className="flex items-center justify-between gap-3 text-left">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: activeNode.colorHex }}
+                    />
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-signal-100 truncate">
+                      {activeNode.label}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-signal-400 truncate mt-0.5">{activeNode.description}</p>
+                </div>
+                <button
+                  onClick={() => handleNavigate(activeNode)}
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-raised hover:bg-violet-deep border border-white/15 hover:border-violet-electric text-[10px] font-mono text-signal-100 transition-colors flex-shrink-0"
+                >
+                  <span>Navigate</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center justify-center gap-2 text-[10px] font-mono text-signal-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-electric animate-pulse" />
+                <span>SELECT OR TAP DESTINATION NODES BELOW</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+
+export default SceneFallback;
