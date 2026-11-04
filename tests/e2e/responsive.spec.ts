@@ -72,14 +72,17 @@ test.describe('Interactive Features', () => {
     await expect(searchInput).toBeVisible();
 
     // Type a specific query
-    await searchInput.fill('LinkVault');
+    await searchInput.fill('ETS');
 
-    // LinkVault should remain visible
-    await expect(page.locator('text=LinkVault Repository')).toBeVisible();
+    // ETS project should remain visible
+    await expect(page.locator('text=ETS — Encrypted Tiered Storage').first()).toBeVisible();
 
     // Clear search
     await searchInput.fill('');
-    await expect(page.locator('text=Open Source Codebase').first()).toBeVisible();
+    await expect(page.locator('text=GitHub Repositories').first()).toBeVisible();
+    await expect(page.locator('text=Techie Ashish').first()).toBeVisible();
+    await expect(page.locator('text=Financial Education for Young Citizens').first()).toBeVisible();
+    await expect(page.locator('text=Uttarakhand Technical University').first()).toBeVisible();
   });
 
   test('share modal opens with QR canvas and closes cleanly', async ({ page }) => {

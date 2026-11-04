@@ -4,6 +4,8 @@ export type StudioTab =
   | 'socials'
   | 'collections'
   | 'projects'
+  | 'media'
+  | 'credentials'
   | 'appearance'
   | 'seo'
   | 'export'

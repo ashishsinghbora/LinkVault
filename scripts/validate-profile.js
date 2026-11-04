@@ -41,6 +41,9 @@ try {
   console.log(`   - Socials: ${parsed.socials.length}`);
   console.log(`   - Collections: ${parsed.collections.length}`);
   console.log(`   - Projects: ${parsed.projects.length}`);
+  console.log(`   - Certifications: ${parsed.certifications?.length || 0}`);
+  console.log(`   - Education: ${parsed.education?.length || 0}`);
+  console.log(`   - Media Sections: ${parsed.mediaSections?.length || 0}`);
   console.log(`   - Accent: ${parsed.appearance?.accentColor || 'mint'}`);
   process.exit(0);
 } catch (err) {

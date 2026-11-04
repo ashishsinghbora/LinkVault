@@ -69,6 +69,50 @@ export const ProjectItemSchema = z.object({
   enabled: z.boolean().default(true),
 });
 
+export const CertificationItemSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  issuer: z.string().min(1),
+  issuedDate: z.string().default(''),
+  credentialId: z.string().optional().default(''),
+  credentialUrl: safeUrlSchema.optional().default(''),
+  icon: z.string().optional().default('award'),
+  order: z.number().int().default(0),
+  enabled: z.boolean().default(true),
+});
+
+export const EducationItemSchema = z.object({
+  id: z.string().min(1),
+  institution: z.string().min(1),
+  degree: z.string().optional().default(''),
+  field: z.string().optional().default(''),
+  period: z.string().default(''),
+  description: z.string().optional().default(''),
+  order: z.number().int().default(0),
+  enabled: z.boolean().default(true),
+});
+
+export const MediaVideoSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  url: safeUrlSchema,
+  videoId: z.string().min(1),
+  description: z.string().optional().default(''),
+  order: z.number().int().default(0),
+  enabled: z.boolean().default(true),
+});
+
+export const MediaSectionSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().optional().default(''),
+  channelUrl: safeUrlSchema.optional().default(''),
+  channelLabel: z.string().optional().default(''),
+  videos: z.array(MediaVideoSchema).default([]),
+  order: z.number().int().default(0),
+  enabled: z.boolean().default(true),
+});
+
 export const ProfileDataSchema = z.object({
   schemaVersion: z.number().int().default(1),
   profile: z.object({
@@ -92,6 +136,9 @@ export const ProfileDataSchema = z.object({
   socials: z.array(SocialLinkSchema).default([]),
   collections: z.array(LinkCollectionSchema).default([]),
   projects: z.array(ProjectItemSchema).default([]),
+  certifications: z.array(CertificationItemSchema).optional().default([]),
+  education: z.array(EducationItemSchema).optional().default([]),
+  mediaSections: z.array(MediaSectionSchema).optional().default([]),
   appearance: z.object({
     defaultTheme: z.enum(['dark', 'light', 'system']).default('dark'),
     accentColor: z.enum(['mint', 'cyan', 'emerald', 'amber', 'violet']).default('mint'),
@@ -303,6 +350,9 @@ export const DEFAULT_PROFILE: ProfileData = {
       enabled: true,
     },
   ],
+  certifications: [],
+  education: [],
+  mediaSections: [],
   appearance: {
     defaultTheme: "dark",
     accentColor: "mint",
@@ -352,5 +402,20 @@ export function sanitizeProfileData(data: ProfileData): ProfileData {
     projects: (data.projects || [])
       .filter((p) => p.enabled)
       .sort((a, b) => a.order - b.order),
+    certifications: (data.certifications || [])
+      .filter((c) => c.enabled)
+      .sort((a, b) => a.order - b.order),
+    education: (data.education || [])
+      .filter((e) => e.enabled)
+      .sort((a, b) => a.order - b.order),
+    mediaSections: (data.mediaSections || [])
+      .filter((m) => m.enabled)
+      .sort((a, b) => a.order - b.order)
+      .map((m) => ({
+        ...m,
+        videos: (m.videos || [])
+          .filter((v) => v.enabled)
+          .sort((a, b) => a.order - b.order),
+      })),
   };
 }

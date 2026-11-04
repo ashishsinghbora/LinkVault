@@ -52,6 +52,7 @@ export const LinkCollections: React.FC<LinkCollectionsProps> = ({
     .filter((c) => c.items.length > 0 || !query);
 
   if (filteredCollections.length === 0) {
+    if (!query) return null;
     return (
       <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 my-8 text-center py-10 rounded-xl bg-signal-900/50 border border-white/5 font-mono text-xs text-signal-400">
         // NO LINKS FOUND MATCHING &quot;{searchQuery}&quot;

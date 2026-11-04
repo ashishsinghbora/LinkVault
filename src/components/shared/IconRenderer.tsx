@@ -50,6 +50,16 @@ import {
   PenTool,
   Package,
   Tag,
+  Award,
+  GraduationCap,
+  PlayCircle,
+  Trophy,
+  FlaskConical,
+  Microscope,
+  BrainCircuit,
+  Wrench,
+  HardDrive,
+  Network,
 } from 'lucide-react';
 import { BrandIcon } from './BrandIcon';
 
@@ -113,6 +123,17 @@ const LUCIDE_ICONS: Record<string, React.ElementType> = {
   'pen-tool': PenTool,
   package: Package,
   tag: Tag,
+  award: Award,
+  'graduation-cap': GraduationCap,
+  education: GraduationCap,
+  'play-circle': PlayCircle,
+  trophy: Trophy,
+  'flask-conical': FlaskConical,
+  microscope: Microscope,
+  'brain-circuit': BrainCircuit,
+  wrench: Wrench,
+  'hard-drive': HardDrive,
+  network: Network,
 };
 
 export const IconRenderer: React.FC<IconRendererProps> = ({
@@ -125,7 +146,7 @@ export const IconRenderer: React.FC<IconRendererProps> = ({
   // Try brand icon first
   const brandSvg = <BrandIcon name={normalized} className={className} size={size} />;
   if (
-    ['github', 'x', 'twitter', 'linkedin', 'bluesky', 'mastodon', 'discord', 'telegram', 'youtube'].includes(
+    ['github', 'x', 'twitter', 'linkedin', 'bluesky', 'mastodon', 'discord', 'telegram', 'youtube', 'instagram', 'orcid'].includes(
       normalized
     )
   ) {

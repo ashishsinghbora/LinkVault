@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "profile": {
     "name": "Ashish Singh Bora",
-    "headline": "Systems & Security Engineer • Open Source Architect",
-    "bio": "Building high-assurance distributed systems, cryptographic tooling, and privacy-preserving infrastructure. Dedicated to open-source resilience and minimalist software craftsmanship.",
+    "headline": "Computer Science & Engineering | Systems Engineering | AI/ML | Open Source",
+    "bio": "Computer Science and Engineering undergraduate focused on systems engineering, Linux, computer vision, AI/ML, open-source software and resource-efficient computing.",
     "avatar": "",
     "initialsFallback": "AB",
-    "location": "Bengaluru, India • UTC+5:30",
+    "location": "India",
     "availability": {
       "status": "available",
       "label": "Open to Collaboration"
     },
     "email": "",
-    "website": "https://ashishsinghbora.github.io",
+    "website": "https://ashishsinghbora.github.io/Portfolio/",
     "gpgFingerprint": ""
   },
   "socials": [
@@ -30,123 +30,221 @@
       "id": "soc-linkedin",
       "platform": "linkedin",
       "label": "LinkedIn",
-      "url": "https://www.linkedin.com/in/ashishsinghbora",
+      "url": "https://www.linkedin.com/in/ashishsinghbora/",
       "username": "ashishsinghbora",
       "icon": "linkedin",
       "order": 2,
       "enabled": true
     },
     {
-      "id": "soc-portfolio",
-      "platform": "globe",
-      "label": "Portfolio",
-      "url": "https://ashishsinghbora.github.io",
-      "username": "ashishsinghbora.github.io",
-      "icon": "globe",
+      "id": "soc-instagram",
+      "platform": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/ashishbora2005/",
+      "username": "@ashishbora2005",
+      "icon": "instagram",
       "order": 3,
+      "enabled": true
+    },
+    {
+      "id": "soc-youtube",
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Techie-Ashish",
+      "username": "@Techie-Ashish",
+      "icon": "youtube",
+      "order": 4,
+      "enabled": true
+    },
+    {
+      "id": "soc-orcid",
+      "platform": "orcid",
+      "label": "ORCID",
+      "url": "https://orcid.org/0009-0006-3144-5071",
+      "username": "0009-0006-3144-5071",
+      "icon": "orcid",
+      "order": 5,
       "enabled": true
     }
   ],
   "collections": [
     {
       "id": "col-core",
-      "title": "Core Work & Identity",
-      "description": "Primary repositories, technical foundations, and published tools.",
+      "title": "Core Identity & Links",
+      "description": "Portfolio, repositories, and primary digital presence.",
       "icon": "terminal",
       "order": 1,
       "enabled": true,
       "items": [
         {
-          "id": "lnk-linkvault-repo",
-          "title": "LinkVault Repository",
-          "description": "Privacy-first personal digital signal deck with zero-trust local Studio.",
-          "url": "https://github.com/ashishsinghbora/LinkVault",
-          "icon": "shield-check",
-          "badge": "v1.0 • NEW",
+          "id": "lnk-portfolio",
+          "title": "Personal Portfolio",
+          "description": "Published projects, writing, and technical highlights.",
+          "url": "https://ashishsinghbora.github.io/Portfolio/",
+          "icon": "layout-dashboard",
+          "badge": "Portfolio",
           "featured": true,
           "order": 1,
           "enabled": true
         },
         {
           "id": "lnk-gh-repos",
-          "title": "Open Source Codebase",
-          "description": "Distributed protocols, security scanners, and systems development.",
+          "title": "GitHub Repositories",
+          "description": "Open-source projects, experiments, and research tools.",
           "url": "https://github.com/ashishsinghbora?tab=repositories",
-          "icon": "code-2",
-          "badge": "Active",
+          "icon": "github",
+          "badge": "Open Source",
           "featured": true,
           "order": 2,
           "enabled": true
         },
         {
-          "id": "lnk-portfolio",
-          "title": "Personal Portfolio",
-          "description": "Published projects, writing, and technical highlights.",
-          "url": "https://ashishsinghbora.github.io",
-          "icon": "layout-dashboard",
-          "badge": "Portfolio",
-          "featured": true,
+          "id": "lnk-linkvault-repo",
+          "title": "LinkVault",
+          "description": "This site — privacy-first personal digital signal deck with zero-trust local Studio.",
+          "url": "https://github.com/ashishsinghbora/LinkVault",
+          "icon": "shield-check",
+          "badge": "v1.0",
+          "featured": false,
           "order": 3,
           "enabled": true
         },
         {
           "id": "lnk-linktree",
           "title": "Linktree",
-          "description": "Quick-access link aggregator for all my profiles and resources.",
+          "description": "Legacy quick-access link aggregator.",
           "url": "https://linktr.ee/ashishsinghbora",
           "icon": "link",
-          "badge": "Links",
+          "badge": "Legacy",
           "featured": false,
           "order": 4,
-          "enabled": true
-        },
-        {
-          "id": "lnk-gpg-keys",
-          "title": "GPG Public Key & Verification",
-          "description": "Cryptographic identity verification and signed release keys.",
-          "url": "https://github.com/ashishsinghbora.gpg",
-          "icon": "key",
-          "badge": "SECURE",
-          "featured": false,
-          "order": 5,
           "enabled": true
         }
       ]
     },
     {
-      "id": "col-research",
-      "title": "Research & Technical Publications",
-      "description": "Whitepapers, architecture RFCs, and engineering deep-dives.",
-      "icon": "file-text",
+      "id": "col-writing",
+      "title": "Writing & Insights",
+      "description": "Articles, technical guides, and published posts.",
+      "icon": "pen-tool",
       "order": 2,
       "enabled": true,
       "items": [
         {
-          "id": "lnk-res-easm",
-          "title": "Modern Attack Surface Monitoring (EASM)",
-          "description": "Taxonomy of external exposure surfaces and automated defense postures.",
-          "url": "https://github.com/ashishsinghbora",
+          "id": "lnk-art-blockchain",
+          "title": "The Blockchain Learning Path",
+          "description": "A structured guide to understanding blockchain fundamentals.",
+          "url": "https://www.linkedin.com/in/ashishsinghbora/",
           "icon": "book-open",
-          "badge": "READ",
+          "badge": "Article",
           "featured": false,
           "order": 1,
           "enabled": true
         },
         {
-          "id": "lnk-res-mailradar",
-          "title": "MailRadar Protocol Analysis",
-          "description": "Telemetry, deliverability tracing, and security verification heuristics.",
-          "url": "https://github.com/ashishsinghbora",
-          "icon": "newspaper",
-          "badge": "RFC",
+          "id": "lnk-art-devlangs",
+          "title": "The Developer's Edge: Languages, Modules & Repos Winning 2026",
+          "description": "Analysis of developer tooling and language trends for 2026.",
+          "url": "https://www.linkedin.com/in/ashishsinghbora/",
+          "icon": "code-2",
+          "badge": "Article",
           "featured": false,
           "order": 2,
+          "enabled": true
+        },
+        {
+          "id": "lnk-art-techintel",
+          "title": "Tech Intelligence Report: January 24, 2026",
+          "description": "Monthly curated digest of significant developments in technology.",
+          "url": "https://www.linkedin.com/in/ashishsinghbora/",
+          "icon": "newspaper",
+          "badge": "Report",
+          "featured": false,
+          "order": 3,
+          "enabled": true
+        },
+        {
+          "id": "lnk-art-osint",
+          "title": "Top 10 OSINT Tools for Effective Information Gathering",
+          "description": "Overview of leading open-source intelligence tools for researchers.",
+          "url": "https://www.linkedin.com/in/ashishsinghbora/",
+          "icon": "search",
+          "badge": "Guide",
+          "featured": false,
+          "order": 4,
+          "enabled": true
+        },
+        {
+          "id": "lnk-art-ai-future",
+          "title": "A Glimpse into the Future of Artificial Intelligence",
+          "description": "Reflections on near-term AI trajectories and implications.",
+          "url": "https://www.linkedin.com/in/ashishsinghbora/",
+          "icon": "sparkles",
+          "badge": "Essay",
+          "featured": false,
+          "order": 5,
           "enabled": true
         }
       ]
     }
   ],
   "projects": [
+    {
+      "id": "proj-ets",
+      "title": "ETS — Encrypted Tiered Storage",
+      "description": "Client-side encrypted tiered cloud storage system for Linux, featuring AES-256 encryption, local SSD caching, background cloud migration, LRU eviction, multiple cloud backends and systemd integration.",
+      "url": "https://github.com/ashishsinghbora/ETS",
+      "repoUrl": "https://github.com/ashishsinghbora/ETS",
+      "demoUrl": "",
+      "status": "Active",
+      "tags": ["Linux", "AES-256", "Cloud Storage", "Systems", "Python"],
+      "icon": "lock",
+      "featured": true,
+      "order": 1,
+      "enabled": true
+    },
+    {
+      "id": "proj-samanvaya",
+      "title": "Samanvaya — Planetary Image Registration",
+      "description": "Computer-vision-based planetary image registration project involving Chandrayaan-2 imagery, feature matching, Fourier-Mellin methods, phase correlation and subpixel refinement.",
+      "url": "https://github.com/ashishsinghbora/Samanvaya",
+      "repoUrl": "https://github.com/ashishsinghbora/Samanvaya",
+      "demoUrl": "",
+      "status": "Research",
+      "tags": ["Computer Vision", "Chandrayaan-2", "Python", "OpenCV", "AI/ML"],
+      "icon": "eye",
+      "featured": true,
+      "order": 2,
+      "enabled": true
+    },
+    {
+      "id": "proj-eda-agent",
+      "title": "EDA-Agent — Autonomous EDA Verification",
+      "description": "Automation-focused EDA verification framework using RTL linting, Yosys synthesis and cocotb-based verification workflows.",
+      "url": "https://github.com/ashishsinghbora/EDA-Agent",
+      "repoUrl": "https://github.com/ashishsinghbora/EDA-Agent",
+      "demoUrl": "",
+      "status": "Active",
+      "tags": ["EDA", "RTL", "Yosys", "Python", "cocotb"],
+      "icon": "cpu",
+      "featured": true,
+      "order": 3,
+      "enabled": true
+    },
+    {
+      "id": "proj-arl",
+      "title": "ARL — Adaptive Reinforcement Learning",
+      "description": "Adaptive reinforcement learning research project. See repository README for current scope and implementation details.",
+      "url": "https://github.com/ashishsinghbora/ARL",
+      "repoUrl": "https://github.com/ashishsinghbora/ARL",
+      "demoUrl": "",
+      "status": "Research",
+      "tags": ["Reinforcement Learning", "AI/ML", "Python"],
+      "icon": "activity",
+      "featured": false,
+      "order": 4,
+      "enabled": true
+    },
     {
       "id": "proj-linkvault",
       "title": "LinkVault",
@@ -155,38 +253,77 @@
       "repoUrl": "https://github.com/ashishsinghbora/LinkVault",
       "demoUrl": "https://ashishsinghbora.github.io/LinkVault",
       "status": "Active",
-      "tags": ["React 18", "TypeScript", "Tailwind CSS", "Vite", "Zod", "Privacy"],
+      "tags": ["React 18", "TypeScript", "Tailwind CSS", "Vite", "Zod"],
       "icon": "shield",
-      "featured": true,
+      "featured": false,
+      "order": 5,
+      "enabled": true
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert-nism",
+      "title": "Financial Education for Young Citizens",
+      "issuer": "National Institute of Securities Markets (NISM)",
+      "issuedDate": "November 2025",
+      "credentialId": "ABCF1000184",
+      "credentialUrl": "",
+      "icon": "award",
       "order": 1,
       "enabled": true
     },
     {
-      "id": "proj-sentinel",
-      "title": "Sentinel EASM",
-      "description": "External attack surface discovery, asset inventory analysis, and continuous security intelligence pipeline.",
-      "url": "https://github.com/ashishsinghbora",
-      "repoUrl": "https://github.com/ashishsinghbora",
-      "demoUrl": "",
-      "status": "Active",
-      "tags": ["Go", "Distributed Systems", "Security", "Telemetry"],
-      "icon": "cpu",
-      "featured": true,
+      "id": "cert-google-genai",
+      "title": "Introduction to Generative AI",
+      "issuer": "Google Cloud Skills Boost",
+      "issuedDate": "August 2024",
+      "credentialId": "10397407",
+      "credentialUrl": "",
+      "icon": "sparkles",
       "order": 2,
       "enabled": true
-    },
+    }
+  ],
+  "education": [
     {
-      "id": "proj-mailradar",
-      "title": "MailRadar",
-      "description": "High-performance email routing analytics, deliverability validation, and domain reputation telemetry.",
-      "url": "https://github.com/ashishsinghbora",
-      "repoUrl": "https://github.com/ashishsinghbora",
-      "demoUrl": "",
-      "status": "Maintained",
-      "tags": ["TypeScript", "DNS", "Security", "Analytics"],
-      "icon": "radio",
-      "featured": false,
-      "order": 3,
+      "id": "edu-utu",
+      "institution": "Uttarakhand Technical University",
+      "degree": "Bachelor of Technology",
+      "field": "Computer Science and Engineering",
+      "period": "2023–2027",
+      "description": "",
+      "order": 1,
+      "enabled": true
+    }
+  ],
+  "mediaSections": [
+    {
+      "id": "media-youtube",
+      "title": "Techie Ashish",
+      "description": "Hardware repair, OS setup, and Linux experiments.",
+      "channelUrl": "https://www.youtube.com/@Techie-Ashish",
+      "channelLabel": "@Techie-Ashish",
+      "videos": [
+        {
+          "id": "vid-dell-vostro",
+          "title": "Bringing a Dead Dell Vostro N Series Laptop Back to Life! | Fan Cleaning & OS Boot",
+          "url": "https://www.youtube.com/watch?v=YvRS3thO0f0",
+          "videoId": "YvRS3thO0f0",
+          "description": "Full walkthrough of fan cleaning and OS boot restoration on a dead Dell Vostro N series laptop.",
+          "order": 1,
+          "enabled": true
+        },
+        {
+          "id": "vid-lenovo-fan",
+          "title": "Fan cleaning of laptop (Lenovo IdeaPad 3)",
+          "url": "https://www.youtube.com/watch?v=SA0C7S9hz1s",
+          "videoId": "SA0C7S9hz1s",
+          "description": "Step-by-step fan cleaning guide for Lenovo IdeaPad 3.",
+          "order": 2,
+          "enabled": true
+        }
+      ],
+      "order": 1,
       "enabled": true
     }
   ],
@@ -198,11 +335,11 @@
   },
   "metadata": {
     "title": "Ashish Singh Bora | Digital Signal Deck",
-    "description": "Privacy-first digital identity, open-source systems, engineering research, and curated technical links.",
+    "description": "CS & Engineering undergraduate focused on systems engineering, Linux, computer vision, AI/ML and open-source software.",
     "canonicalUrl": "https://ashishsinghbora.github.io/LinkVault",
     "ogImage": "/og-image.svg",
     "author": "Ashish Singh Bora",
-    "twitterHandle": "@ashishsinghbora",
+    "twitterHandle": "",
     "robots": "index, follow"
   },
   "privacy": {

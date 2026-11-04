@@ -4,6 +4,9 @@ import { ProfileHero } from '../../src/components/profile/ProfileHero';
 import { LinkCollections } from '../../src/components/links/LinkCollections';
 import { ContactSection } from '../../src/components/profile/ContactSection';
 import { SearchBar } from '../../src/components/shared/SearchBar';
+import { MediaSection } from '../../src/components/media/MediaSection';
+import { CertificationsSection } from '../../src/components/profile/CertificationsSection';
+import { EducationSection } from '../../src/components/profile/EducationSection';
 
 describe('Frontend UI Components', () => {
   it('renders ProfileHero with fallback initials when avatar is empty', () => {
@@ -107,5 +110,73 @@ describe('Frontend UI Components', () => {
     const clearBtn = screen.getByRole('button', { name: /clear search query/i });
     fireEvent.click(clearBtn);
     expect(handleChange).toHaveBeenCalledWith('');
+  });
+
+  it('renders MediaSection with video cards and watch links', () => {
+    const mediaSections = [
+      {
+        id: 'media-yt',
+        title: 'Techie Ashish',
+        description: 'Hardware repair & OS experiments.',
+        channelUrl: 'https://www.youtube.com/@Techie-Ashish',
+        channelLabel: '@Techie-Ashish',
+        videos: [
+          {
+            id: 'v1',
+            title: 'Bringing a Dead Dell Vostro N Series Laptop Back to Life!',
+            url: 'https://www.youtube.com/watch?v=YvRS3thO0f0',
+            videoId: 'YvRS3thO0f0',
+            description: 'Fan cleaning and OS restoration',
+            order: 1,
+            enabled: true,
+          },
+        ],
+        order: 1,
+        enabled: true,
+      },
+    ];
+
+    render(<MediaSection sections={mediaSections} />);
+    expect(screen.getByText('Techie Ashish')).toBeInTheDocument();
+    expect(screen.getByText('Bringing a Dead Dell Vostro N Series Laptop Back to Life!')).toBeInTheDocument();
+    expect(screen.getByText('@Techie-Ashish')).toBeInTheDocument();
+  });
+
+  it('renders CertificationsSection with credential ID as metadata', () => {
+    const certs = [
+      {
+        id: 'c1',
+        title: 'Financial Education for Young Citizens',
+        issuer: 'National Institute of Securities Markets (NISM)',
+        issuedDate: 'November 2025',
+        credentialId: 'ABCF1000184',
+        order: 1,
+        enabled: true,
+      },
+    ];
+
+    render(<CertificationsSection certifications={certs} />);
+    expect(screen.getByText('Financial Education for Young Citizens')).toBeInTheDocument();
+    expect(screen.getByText('National Institute of Securities Markets (NISM)')).toBeInTheDocument();
+    expect(screen.getByText(/ABCF1000184/)).toBeInTheDocument();
+  });
+
+  it('renders EducationSection with degree and period', () => {
+    const edu = [
+      {
+        id: 'e1',
+        institution: 'Uttarakhand Technical University',
+        degree: 'Bachelor of Technology',
+        field: 'Computer Science and Engineering',
+        period: '2023–2027',
+        order: 1,
+        enabled: true,
+      },
+    ];
+
+    render(<EducationSection education={edu} />);
+    expect(screen.getByText('Uttarakhand Technical University')).toBeInTheDocument();
+    expect(screen.getByText(/Bachelor of Technology/)).toBeInTheDocument();
+    expect(screen.getByText('2023–2027')).toBeInTheDocument();
   });
 });

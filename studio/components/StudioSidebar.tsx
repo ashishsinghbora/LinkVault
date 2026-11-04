@@ -11,6 +11,8 @@ import {
   Code2,
   Terminal,
   ExternalLink,
+  Video,
+  Award,
 } from 'lucide-react';
 import type { StudioTab } from '../types';
 import type { ProfileData } from '../../src/types/profile';
@@ -48,6 +50,18 @@ export const StudioSidebar: React.FC<StudioSidebarProps> = ({
       label: 'Projects',
       icon: Cpu,
       count: data.projects.length,
+    },
+    {
+      id: 'media' as StudioTab,
+      label: 'Media & YouTube',
+      icon: Video,
+      count: (data.mediaSections || []).reduce((sum, s) => sum + (s.videos?.length || 0), 0),
+    },
+    {
+      id: 'credentials' as StudioTab,
+      label: 'Certifications & Edu',
+      icon: Award,
+      count: (data.certifications?.length || 0) + (data.education?.length || 0),
     },
     { id: 'appearance' as StudioTab, label: 'Appearance & Theme', icon: Palette },
     { id: 'seo' as StudioTab, label: 'SEO & Metadata', icon: Globe },

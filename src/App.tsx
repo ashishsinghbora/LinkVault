@@ -9,6 +9,9 @@ import { ProfileHero } from './components/profile/ProfileHero';
 import { FeaturedSection } from './components/links/FeaturedSection';
 import { LinkCollections } from './components/links/LinkCollections';
 import { ProjectShowcase } from './components/projects/ProjectShowcase';
+import { MediaSection } from './components/media/MediaSection';
+import { CertificationsSection } from './components/profile/CertificationsSection';
+import { EducationSection } from './components/profile/EducationSection';
 import { ContactSection } from './components/profile/ContactSection';
 import { SearchBar } from './components/shared/SearchBar';
 import { ShareModal } from './components/shared/ShareModal';
@@ -116,17 +119,32 @@ export function App() {
           />
         )}
 
-        {/* Directory Collections */}
-        <LinkCollections
-          collections={profileData.collections}
-          searchQuery={searchQuery}
-        />
-
         {/* Systems & Open Source Projects */}
         <ProjectShowcase
           projects={profileData.projects}
           searchQuery={searchQuery}
         />
+
+        {/* Media & YouTube Transmissions */}
+        {!searchQuery && profileData.mediaSections && profileData.mediaSections.length > 0 && (
+          <MediaSection sections={profileData.mediaSections} />
+        )}
+
+        {/* Directory Collections (Core Links, Articles & Writing) */}
+        <LinkCollections
+          collections={profileData.collections}
+          searchQuery={searchQuery}
+        />
+
+        {/* Certifications & Credentials */}
+        {!searchQuery && profileData.certifications && profileData.certifications.length > 0 && (
+          <CertificationsSection certifications={profileData.certifications} />
+        )}
+
+        {/* Education & Academic History */}
+        {!searchQuery && profileData.education && profileData.education.length > 0 && (
+          <EducationSection education={profileData.education} />
+        )}
 
         {/* Direct Contact Channels */}
         <ContactSection

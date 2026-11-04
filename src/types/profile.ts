@@ -55,6 +55,50 @@ export interface ProjectItem {
   enabled: boolean;
 }
 
+export interface CertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  issuedDate: string;        // e.g. "November 2025"
+  credentialId?: string;
+  credentialUrl?: string;    // only if a verified public URL exists
+  icon?: string;
+  order: number;
+  enabled: boolean;
+}
+
+export interface EducationItem {
+  id: string;
+  institution: string;
+  degree?: string;
+  field?: string;
+  period: string;            // e.g. "2023–2027"
+  description?: string;
+  order: number;
+  enabled: boolean;
+}
+
+export interface MediaVideo {
+  id: string;
+  title: string;
+  url: string;               // full youtube watch URL
+  videoId: string;           // YouTube video ID only (for thumbnail)
+  description?: string;
+  order: number;
+  enabled: boolean;
+}
+
+export interface MediaSection {
+  id: string;
+  title: string;
+  description?: string;
+  channelUrl?: string;
+  channelLabel?: string;
+  videos: MediaVideo[];
+  order: number;
+  enabled: boolean;
+}
+
 export interface ProfileData {
   schemaVersion: number;
   profile: {
@@ -75,6 +119,9 @@ export interface ProfileData {
   socials: SocialLink[];
   collections: LinkCollection[];
   projects: ProjectItem[];
+  certifications?: CertificationItem[];
+  education?: EducationItem[];
+  mediaSections?: MediaSection[];
   appearance: {
     defaultTheme: ThemeMode;
     accentColor: AccentColor;

@@ -10,6 +10,8 @@ import { IdentityTab } from './pages/IdentityTab';
 import { SocialsTab } from './pages/SocialsTab';
 import { CollectionsTab } from './pages/CollectionsTab';
 import { ProjectsTab } from './pages/ProjectsTab';
+import { MediaTab } from './pages/MediaTab';
+import { CredentialsTab } from './pages/CredentialsTab';
 import { AppearanceTab } from './pages/AppearanceTab';
 import { SeoTab } from './pages/SeoTab';
 import { ExportTab } from './pages/ExportTab';
@@ -319,6 +321,14 @@ export function StudioApp() {
 
           {activeTab === 'projects' && (
             <ProjectsTab data={profileData} onChange={handleDataChange} />
+          )}
+
+          {activeTab === 'media' && (
+            <MediaTab data={profileData} onChange={handleDataChange} />
+          )}
+
+          {activeTab === 'credentials' && (
+            <CredentialsTab data={profileData} onChange={handleDataChange} />
           )}
 
           {activeTab === 'appearance' && (

@@ -33,6 +33,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
       case 'active':
         return 'bg-mint-500/15 text-mint-400 border-mint-500/30';
       case 'beta':
+      case 'research':
         return 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30';
       case 'maintained':
         return 'bg-amber-500/15 text-amber-400 border-amber-500/30';

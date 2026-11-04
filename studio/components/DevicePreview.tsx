@@ -7,6 +7,9 @@ import { ProfileHero } from '../../src/components/profile/ProfileHero';
 import { FeaturedSection } from '../../src/components/links/FeaturedSection';
 import { LinkCollections } from '../../src/components/links/LinkCollections';
 import { ProjectShowcase } from '../../src/components/projects/ProjectShowcase';
+import { MediaSection } from '../../src/components/media/MediaSection';
+import { CertificationsSection } from '../../src/components/profile/CertificationsSection';
+import { EducationSection } from '../../src/components/profile/EducationSection';
 import { ContactSection } from '../../src/components/profile/ContactSection';
 import { Navbar } from '../../src/components/layout/Navbar';
 import { Footer } from '../../src/components/layout/Footer';
@@ -166,9 +169,21 @@ export const DevicePreview: React.FC<DevicePreviewProps> = ({ data }) => {
               featuredProjects={featuredProjects}
             />
 
+            <ProjectShowcase projects={cleanData.projects} />
+
+            {cleanData.mediaSections && cleanData.mediaSections.length > 0 && (
+              <MediaSection sections={cleanData.mediaSections} />
+            )}
+
             <LinkCollections collections={cleanData.collections} />
 
-            <ProjectShowcase projects={cleanData.projects} />
+            {cleanData.certifications && cleanData.certifications.length > 0 && (
+              <CertificationsSection certifications={cleanData.certifications} />
+            )}
+
+            {cleanData.education && cleanData.education.length > 0 && (
+              <EducationSection education={cleanData.education} />
+            )}
 
             <ContactSection
               profile={cleanData.profile}
