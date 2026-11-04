@@ -44,6 +44,12 @@ import {
   ArrowUpRight,
   ChevronDown,
   ChevronUp,
+  LayoutDashboard,
+  Home,
+  Rss,
+  PenTool,
+  Package,
+  Tag,
 } from 'lucide-react';
 import { BrandIcon } from './BrandIcon';
 
@@ -101,6 +107,12 @@ const LUCIDE_ICONS: Record<string, React.ElementType> = {
   'arrow-up-right': ArrowUpRight,
   'chevron-down': ChevronDown,
   'chevron-up': ChevronUp,
+  'layout-dashboard': LayoutDashboard,
+  home: Home,
+  rss: Rss,
+  'pen-tool': PenTool,
+  package: Package,
+  tag: Tag,
 };
 
 export const IconRenderer: React.FC<IconRendererProps> = ({

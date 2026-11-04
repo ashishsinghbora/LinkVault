@@ -9,11 +9,11 @@
     "location": "Bengaluru, India • UTC+5:30",
     "availability": {
       "status": "available",
-      "label": "Available for Architecture & Security Consulting"
+      "label": "Open to Collaboration"
     },
-    "email": "ashishsinghbora@users.noreply.github.com",
-    "website": "https://github.com/ashishsinghbora",
-    "gpgFingerprint": "9F8B 32C1 4A5D 7E6F 1B2C 3D4E 5F6A 7B8C 9D0E 1F2A"
+    "email": "",
+    "website": "https://ashishsinghbora.github.io",
+    "gpgFingerprint": ""
   },
   "socials": [
     {
@@ -27,33 +27,23 @@
       "enabled": true
     },
     {
-      "id": "soc-x",
-      "platform": "x",
-      "label": "X (Twitter)",
-      "url": "https://x.com",
-      "username": "@ashishsinghbora",
-      "icon": "x",
+      "id": "soc-linkedin",
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ashishsinghbora",
+      "username": "ashishsinghbora",
+      "icon": "linkedin",
       "order": 2,
       "enabled": true
     },
     {
-      "id": "soc-linkedin",
-      "platform": "linkedin",
-      "label": "LinkedIn",
-      "url": "https://linkedin.com",
-      "username": "ashishsinghbora",
-      "icon": "linkedin",
+      "id": "soc-portfolio",
+      "platform": "globe",
+      "label": "Portfolio",
+      "url": "https://ashishsinghbora.github.io",
+      "username": "ashishsinghbora.github.io",
+      "icon": "globe",
       "order": 3,
-      "enabled": true
-    },
-    {
-      "id": "soc-bluesky",
-      "platform": "bluesky",
-      "label": "Bluesky",
-      "url": "https://bsky.app",
-      "username": "@ashishsinghbora.bsky.social",
-      "icon": "bluesky",
-      "order": 4,
       "enabled": true
     }
   ],
@@ -89,6 +79,28 @@
           "enabled": true
         },
         {
+          "id": "lnk-portfolio",
+          "title": "Personal Portfolio",
+          "description": "Published projects, writing, and technical highlights.",
+          "url": "https://ashishsinghbora.github.io",
+          "icon": "layout-dashboard",
+          "badge": "Portfolio",
+          "featured": true,
+          "order": 3,
+          "enabled": true
+        },
+        {
+          "id": "lnk-linktree",
+          "title": "Linktree",
+          "description": "Quick-access link aggregator for all my profiles and resources.",
+          "url": "https://linktr.ee/ashishsinghbora",
+          "icon": "link",
+          "badge": "Links",
+          "featured": false,
+          "order": 4,
+          "enabled": true
+        },
+        {
           "id": "lnk-gpg-keys",
           "title": "GPG Public Key & Verification",
           "description": "Cryptographic identity verification and signed release keys.",
@@ -96,7 +108,7 @@
           "icon": "key",
           "badge": "SECURE",
           "featured": false,
-          "order": 3,
+          "order": 5,
           "enabled": true
         }
       ]
@@ -194,7 +206,7 @@
     "robots": "index, follow"
   },
   "privacy": {
-    "showGpg": true,
+    "showGpg": false,
     "allowSearch": true,
     "showPoweredBy": true
   }
