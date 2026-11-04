@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ashishsinghbora.github.io/LinkVault/sitemap.xml

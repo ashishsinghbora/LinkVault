@@ -1,0 +1,40 @@
+name: Continuous Integration Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate profile schema
+        run: npm run validate
+
+      - name: TypeScript typecheck
+        run: npm run typecheck
+
+      - name: Vitest unit tests
+        run: npm run test
+
+      - name: Build static production bundle
+        run: npm run build

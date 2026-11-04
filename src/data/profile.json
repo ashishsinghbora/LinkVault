@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "name": "Ashish Singh Bora",
+    "headline": "Systems & Security Engineer • Open Source Architect",
+    "bio": "Building high-assurance distributed systems, cryptographic tooling, and privacy-preserving infrastructure. Dedicated to open-source resilience and minimalist software craftsmanship.",
+    "avatar": "",
+    "initialsFallback": "AB",
+    "location": "Bengaluru, India • UTC+5:30",
+    "availability": {
+      "status": "available",
+      "label": "Available for Architecture & Security Consulting"
+    },
+    "email": "ashishsinghbora@users.noreply.github.com",
+    "website": "https://github.com/ashishsinghbora",
+    "gpgFingerprint": "9F8B 32C1 4A5D 7E6F 1B2C 3D4E 5F6A 7B8C 9D0E 1F2A"
+  },
+  "socials": [
+    {
+      "id": "soc-github",
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/ashishsinghbora",
+      "username": "@ashishsinghbora",
+      "icon": "github",
+      "order": 1,
+      "enabled": true
+    },
+    {
+      "id": "soc-x",
+      "platform": "x",
+      "label": "X (Twitter)",
+      "url": "https://x.com",
+      "username": "@ashishsinghbora",
+      "icon": "x",
+      "order": 2,
+      "enabled": true
+    },
+    {
+      "id": "soc-linkedin",
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com",
+      "username": "ashishsinghbora",
+      "icon": "linkedin",
+      "order": 3,
+      "enabled": true
+    },
+    {
+      "id": "soc-bluesky",
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app",
+      "username": "@ashishsinghbora.bsky.social",
+      "icon": "bluesky",
+      "order": 4,
+      "enabled": true
+    }
+  ],
+  "collections": [
+    {
+      "id": "col-core",
+      "title": "Core Work & Identity",
+      "description": "Primary repositories, technical foundations, and published tools.",
+      "icon": "terminal",
+      "order": 1,
+      "enabled": true,
+      "items": [
+        {
+          "id": "lnk-linkvault-repo",
+          "title": "LinkVault Repository",
+          "description": "Privacy-first personal digital signal deck with zero-trust local Studio.",
+          "url": "https://github.com/ashishsinghbora/LinkVault",
+          "icon": "shield-check",
+          "badge": "v1.0 • NEW",
+          "featured": true,
+          "order": 1,
+          "enabled": true
+        },
+        {
+          "id": "lnk-gh-repos",
+          "title": "Open Source Codebase",
+          "description": "Distributed protocols, security scanners, and systems development.",
+          "url": "https://github.com/ashishsinghbora?tab=repositories",
+          "icon": "code-2",
+          "badge": "Active",
+          "featured": true,
+          "order": 2,
+          "enabled": true
+        },
+        {
+          "id": "lnk-gpg-keys",
+          "title": "GPG Public Key & Verification",
+          "description": "Cryptographic identity verification and signed release keys.",
+          "url": "https://github.com/ashishsinghbora.gpg",
+          "icon": "key",
+          "badge": "SECURE",
+          "featured": false,
+          "order": 3,
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "col-research",
+      "title": "Research & Technical Publications",
+      "description": "Whitepapers, architecture RFCs, and engineering deep-dives.",
+      "icon": "file-text",
+      "order": 2,
+      "enabled": true,
+      "items": [
+        {
+          "id": "lnk-res-easm",
+          "title": "Modern Attack Surface Monitoring (EASM)",
+          "description": "Taxonomy of external exposure surfaces and automated defense postures.",
+          "url": "https://github.com/ashishsinghbora",
+          "icon": "book-open",
+          "badge": "READ",
+          "featured": false,
+          "order": 1,
+          "enabled": true
+        },
+        {
+          "id": "lnk-res-mailradar",
+          "title": "MailRadar Protocol Analysis",
+          "description": "Telemetry, deliverability tracing, and security verification heuristics.",
+          "url": "https://github.com/ashishsinghbora",
+          "icon": "newspaper",
+          "badge": "RFC",
+          "featured": false,
+          "order": 2,
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-linkvault",
+      "title": "LinkVault",
+      "description": "Privacy-first digital identity platform & signal deck. Self-hostable, zero-tracker, static GitHub Pages deployment with a private local visual Studio.",
+      "url": "https://github.com/ashishsinghbora/LinkVault",
+      "repoUrl": "https://github.com/ashishsinghbora/LinkVault",
+      "demoUrl": "https://ashishsinghbora.github.io/LinkVault",
+      "status": "Active",
+      "tags": ["React 18", "TypeScript", "Tailwind CSS", "Vite", "Zod", "Privacy"],
+      "icon": "shield",
+      "featured": true,
+      "order": 1,
+      "enabled": true
+    },
+    {
+      "id": "proj-sentinel",
+      "title": "Sentinel EASM",
+      "description": "External attack surface discovery, asset inventory analysis, and continuous security intelligence pipeline.",
+      "url": "https://github.com/ashishsinghbora",
+      "repoUrl": "https://github.com/ashishsinghbora",
+      "demoUrl": "",
+      "status": "Active",
+      "tags": ["Go", "Distributed Systems", "Security", "Telemetry"],
+      "icon": "cpu",
+      "featured": true,
+      "order": 2,
+      "enabled": true
+    },
+    {
+      "id": "proj-mailradar",
+      "title": "MailRadar",
+      "description": "High-performance email routing analytics, deliverability validation, and domain reputation telemetry.",
+      "url": "https://github.com/ashishsinghbora",
+      "repoUrl": "https://github.com/ashishsinghbora",
+      "demoUrl": "",
+      "status": "Maintained",
+      "tags": ["TypeScript", "DNS", "Security", "Analytics"],
+      "icon": "radio",
+      "featured": false,
+      "order": 3,
+      "enabled": true
+    }
+  ],
+  "appearance": {
+    "defaultTheme": "dark",
+    "accentColor": "mint",
+    "backgroundStyle": "technical-grid",
+    "cardStyle": "bordered"
+  },
+  "metadata": {
+    "title": "Ashish Singh Bora | Digital Signal Deck",
+    "description": "Privacy-first digital identity, open-source systems, engineering research, and curated technical links.",
+    "canonicalUrl": "https://ashishsinghbora.github.io/LinkVault",
+    "ogImage": "/og-image.svg",
+    "author": "Ashish Singh Bora",
+    "twitterHandle": "@ashishsinghbora",
+    "robots": "index, follow"
+  },
+  "privacy": {
+    "showGpg": true,
+    "allowSearch": true,
+    "showPoweredBy": true
+  }
+}

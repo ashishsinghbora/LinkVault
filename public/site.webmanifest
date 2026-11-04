@@ -1,0 +1,16 @@
+{
+  "name": "LinkVault - Digital Signal Deck",
+  "short_name": "LinkVault",
+  "description": "Privacy-first digital identity platform & link manager for engineers and researchers.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#00f59b",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
