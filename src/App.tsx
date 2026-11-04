@@ -72,6 +72,10 @@ export function App() {
   // Background pattern CSS classes
   const getBackgroundClass = () => {
     switch (background) {
+      case 'deep-space':
+        return 'bg-void';
+      case 'orbital-glow':
+        return 'bg-void bg-radial-emerald bg-no-repeat bg-[center_top_10%]';
       case 'technical-grid':
         return 'bg-grid-pattern dark:bg-grid-pattern light:bg-grid-pattern-light bg-grid-size';
       case 'dots':
@@ -80,7 +84,7 @@ export function App() {
         return 'bg-grid-pattern bg-[length:48px_48px]';
       case 'minimal':
       default:
-        return '';
+        return 'bg-void';
     }
   };
 
@@ -99,15 +103,16 @@ export function App() {
 
       {/* Main Content Area */}
       <main id="main-content" className="relative z-10">
-        {/* Profile Hero */}
+        {/* Profile Hero with 3D Digital Identity Core */}
         <ProfileHero
           profile={profileData.profile}
           socials={profileData.socials}
+          sceneSettings={profileData.appearance?.scene3d}
           onOpenShare={() => setShareModalOpen(true)}
         />
 
         {/* Global Search and Filter Bar */}
-        <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 my-4">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
           <SearchBar value={searchQuery} onChange={setSearchQuery} />
         </div>
 

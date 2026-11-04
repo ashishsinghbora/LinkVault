@@ -44,7 +44,8 @@ try {
   console.log(`   - Certifications: ${parsed.certifications?.length || 0}`);
   console.log(`   - Education: ${parsed.education?.length || 0}`);
   console.log(`   - Media Sections: ${parsed.mediaSections?.length || 0}`);
-  console.log(`   - Accent: ${parsed.appearance?.accentColor || 'mint'}`);
+  console.log(`   - Accent: ${parsed.appearance?.accentColor || 'emerald'}`);
+  console.log(`   - 3D Environment: ${parsed.appearance?.scene3d?.enabled ? 'Active (WebGL Core)' : 'Fallback CSS'}`);
   process.exit(0);
 } catch (err) {
   console.error(`❌ Profile validation error:`, err.message);

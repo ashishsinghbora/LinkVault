@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
-import { MapPin, Mail, Share2, CheckCircle } from 'lucide-react';
-import type { ProfileData } from '../../types/profile';
+import {
+  CheckCircle,
+  ExternalLink,
+  Share2,
+  ArrowDownRight,
+  FolderGit2,
+} from 'lucide-react';
+import type { ProfileData, Scene3DSettings } from '../../types/profile';
 import { IconRenderer } from '../shared/IconRenderer';
+import { BrandIcon } from '../shared/BrandIcon';
+import { DynamicIdentityScene } from '../../scenes/DynamicIdentityScene';
 
 interface ProfileHeroProps {
   profile: ProfileData['profile'];
   socials: ProfileData['socials'];
+  sceneSettings?: Scene3DSettings;
   onOpenShare: () => void;
 }
 
-export const ProfileHero: React.FC<ProfileHeroProps> = ({ profile, socials, onOpenShare }) => {
+export const ProfileHero: React.FC<ProfileHeroProps> = ({
+  profile,
+  socials,
+  sceneSettings,
+  onOpenShare,
+}) => {
   const [avatarError, setAvatarError] = useState(false);
 
   // Compute initials fallback
@@ -19,144 +33,302 @@ export const ProfileHero: React.FC<ProfileHeroProps> = ({ profile, socials, onOp
     if (parts.length >= 2) {
       return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
     }
-    return (profile.name || 'LV').substring(0, 2).toUpperCase();
+    return (profile.name || 'AS').substring(0, 2).toUpperCase();
   };
 
+  const handleNodeClick = (nodeId: string) => {
+    switch (nodeId) {
+      case 'github':
+        window.open('https://github.com/ashishsinghbora', '_blank', 'noopener,noreferrer');
+        break;
+      case 'linkedin':
+        window.open('https://www.linkedin.com/in/ashishsinghbora/', '_blank', 'noopener,noreferrer');
+        break;
+      case 'projects': {
+        const el = document.getElementById('projects-section');
+        el?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      }
+      case 'research': {
+        const el = document.getElementById('collections-section');
+        el?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      }
+      case 'portfolio':
+        window.open(profile.website || 'https://ashishsinghbora.github.io/Portfolio/', '_blank', 'noopener,noreferrer');
+        break;
+      case 'youtube': {
+        const el = document.getElementById('media-heading-media-youtube');
+        el?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      }
+      default:
+        break;
+    }
+  };
 
   return (
     <section
       id="signal-hero"
       aria-labelledby="profile-name"
-      className="relative w-full pt-8 pb-10 px-4 sm:px-6"
+      className="relative w-full pt-6 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
-        {/* Availability Badge */}
-        {profile.availability?.label && (
-          <div className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full max-w-full bg-signal-850 dark:bg-signal-850 light:bg-slate-100 border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm animate-fadeIn text-center">
-            <span className="relative flex h-2 w-2 flex-shrink-0">
-              <span
-                className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                  profile.availability.status === 'busy' ? 'bg-amber-400' : 'bg-mint-400'
-                }`}
-              />
-              <span
-                className={`relative inline-flex rounded-full h-2 w-2 ${
-                  profile.availability.status === 'busy' ? 'bg-amber-400' : 'bg-mint-400'
-                }`}
-              />
-            </span>
-            <span className="text-[11px] font-mono tracking-tight text-signal-300 dark:text-signal-300 light:text-slate-700 truncate sm:whitespace-normal">
-              {profile.availability.label}
-            </span>
-          </div>
-        )}
+      {/* Background ambient lighting glows */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-emerald-500/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none" />
 
-        {/* Avatar with technical frame */}
-        <div className="relative mb-5 group">
-          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden bg-signal-850 dark:bg-signal-850 light:bg-slate-200 border-2 border-mint-500/30 group-hover:border-mint-400 shadow-signal-card transition-all duration-300">
-            {profile.avatar && !avatarError ? (
-              <img
-                src={profile.avatar}
-                alt={`Portrait of ${profile.name}`}
-                onError={() => setAvatarError(true)}
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
-            ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-signal-800 to-signal-900 dark:from-signal-800 dark:to-signal-900 light:from-slate-100 light:to-slate-200">
-                <span className="text-3xl sm:text-4xl font-mono font-bold tracking-wider text-mint-400 dark:text-mint-400 light:text-emerald-700">
-                  {getInitials()}
-                </span>
-                <span className="text-[10px] font-mono text-signal-400 tracking-widest mt-1">
-                  SYS_ID
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* Technical Corner Alignment Ticks */}
-          <div className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 border-mint-400 pointer-events-none" />
-          <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-mint-400 pointer-events-none" />
-        </div>
-
-        {/* Identity & Headline */}
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center justify-center gap-2">
-            <h1
-              id="profile-name"
-              className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-signal-100 dark:text-signal-100 light:text-slate-900"
-            >
-              {profile.name}
-            </h1>
-            <span
-              title="Verified Cryptographic Signal"
-              className="text-mint-400 p-0.5 rounded-full"
-            >
-              <CheckCircle className="w-5 h-5 fill-mint-500/20 text-mint-400" />
-            </span>
-          </div>
-
-          {profile.headline && (
-            <p className="text-sm sm:text-base font-mono text-mint-400 dark:text-mint-400 light:text-emerald-700 max-w-xl mx-auto">
-              {profile.headline}
-            </p>
-          )}
-
-          {profile.location && (
-            <div className="flex items-center justify-center gap-1.5 text-xs text-signal-400 font-mono">
-              <MapPin className="w-3.5 h-3.5 text-signal-500" />
-              <span>{profile.location}</span>
+      <div className="max-w-6xl mx-auto">
+        {/* Top Status Pill & Quick Share */}
+        <div className="flex items-center justify-between gap-4 mb-6">
+          {profile.availability?.label && (
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface/90 border border-white/10 backdrop-blur-md shadow-sm">
+              <span className="relative flex h-2 w-2 flex-shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-glow opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-glow" />
+              </span>
+              <span className="text-[11px] font-mono tracking-tight text-signal-300">
+                {profile.availability.label}
+              </span>
             </div>
           )}
-        </div>
 
-        {/* Bio */}
-        {profile.bio && (
-          <p className="text-sm sm:text-base text-signal-300 dark:text-signal-300 light:text-slate-600 max-w-2xl mx-auto leading-relaxed mb-6">
-            {profile.bio}
-          </p>
-        )}
-
-        {/* Quick Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
           <button
             onClick={onOpenShare}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-mint-500 hover:bg-mint-400 text-signal-950 font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-signal-glow hover:scale-[1.02] active:scale-[0.98]"
+            aria-label="Share profile"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface/80 hover:bg-surface-raised border border-white/10 hover:border-emerald/40 text-xs font-mono text-signal-300 hover:text-signal-100 transition-colors"
           >
-            <Share2 className="w-4 h-4" />
-            Share Profile
+            <Share2 className="w-3.5 h-3.5 text-emerald-glow" />
+            <span className="hidden sm:inline">Share Profile</span>
           </button>
-
-          {profile.email && (
-            <a
-              href={`mailto:${profile.email}`}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-signal-850 dark:bg-signal-850 light:bg-slate-100 hover:bg-signal-800 text-signal-200 dark:text-signal-200 light:text-slate-800 border border-white/10 dark:border-white/10 light:border-slate-300 font-mono text-xs font-medium uppercase tracking-wider transition-colors"
-            >
-              <Mail className="w-4 h-4 text-cyan-400" />
-              Direct Message
-            </a>
-          )}
         </div>
 
-        {/* Social Icons Strip (Touch friendly, >=44px touch targets) */}
-        {socials && socials.length > 0 && (
-          <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
-            {socials.map((social) => (
+        {/* 2-Column Desktop Grid / Stacked Mobile Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* LEFT COLUMN: Identity, Statement, Actions */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
+            {/* Identity Badge with avatar / monogram */}
+            <div className="flex items-center gap-3.5">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden bg-surface-raised border border-emerald/30 shadow-glass-card flex-shrink-0">
+                {profile.avatar && !avatarError ? (
+                  <img
+                    src={profile.avatar}
+                    alt={`Portrait of ${profile.name}`}
+                    onError={() => setAvatarError(true)}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-surface to-surface-raised">
+                    <span className="text-xl sm:text-2xl font-mono font-extrabold tracking-wider text-emerald-glow">
+                      {getInitials()}
+                    </span>
+                  </div>
+                )}
+                {/* Corner tech ticks */}
+                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-emerald-glow pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-violet-lavender pointer-events-none" />
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2">
+                  <h1
+                    id="profile-name"
+                    className="text-xl sm:text-2xl font-bold tracking-tight text-signal-100"
+                  >
+                    {profile.name}
+                  </h1>
+                  <CheckCircle className="w-4 h-4 text-emerald-glow" aria-label="Verified" />
+                </div>
+                <div className="flex items-center gap-2 text-xs font-mono text-signal-400 mt-0.5">
+                  <span className="px-1.5 py-0.2 rounded bg-emerald/10 text-emerald-light border border-emerald/20 text-[10px]">
+                    SYS_ACTIVE
+                  </span>
+                  <span>Uttarakhand Technical University</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Oversized Headline */}
+            <div className="space-y-2">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-signal-100 leading-[1.12]">
+                {profile.headline ? (
+                  profile.headline
+                ) : (
+                  <>
+                    Engineering the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-glow via-emerald-light to-violet-lavender">digital frontier.</span>
+                  </>
+                )}
+              </h2>
+              {profile.bio && (
+                <p className="text-sm sm:text-base text-signal-400 leading-relaxed font-sans max-w-xl pt-1">
+                  {profile.bio}
+                </p>
+              )}
+            </div>
+
+            {/* Call-to-Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto pt-2">
               <a
-                key={social.id}
-                href={social.url}
+                href="https://github.com/ashishsinghbora"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Visit ${social.label} profile: ${social.username || social.url}`}
-                title={`${social.label} ${social.username ? `(${social.username})` : ''}`}
-                className="flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-signal-850 dark:bg-signal-850 light:bg-white text-signal-300 dark:text-signal-300 light:text-slate-700 hover:text-mint-400 hover:border-mint-400/50 border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm transition-all duration-200 hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald hover:bg-emerald-glow text-void font-mono text-xs font-bold transition-all shadow-signal-glow hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-glow"
               >
-                <IconRenderer name={social.icon || social.platform} size={20} />
+                <BrandIcon name="github" className="w-4 h-4" size={16} />
+                <span>GitHub Profile</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-80" />
               </a>
-            ))}
+
+              <a
+                href="https://www.linkedin.com/in/ashishsinghbora/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface hover:bg-surface-raised border border-white/10 hover:border-violet-lavender/40 text-signal-100 font-mono text-xs font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-violet-lavender"
+              >
+                <BrandIcon name="linkedin" className="w-4 h-4 text-violet-lavender" size={16} />
+                <span>LinkedIn</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+              </a>
+
+              <a
+                href="#projects-section"
+                className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-surface-raised/70 hover:bg-surface-raised border border-white/5 hover:border-white/20 text-signal-300 hover:text-signal-100 font-mono text-xs transition-colors"
+              >
+                <FolderGit2 className="w-3.5 h-3.5 text-emerald-glow" />
+                <span>Explore Projects</span>
+                <ArrowDownRight className="w-3.5 h-3.5 opacity-60" />
+              </a>
+            </div>
+
+            {/* Technical Focus Tags */}
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              {[
+                'Systems Engineering',
+                'Linux',
+                'Computer Vision',
+                'AI/ML',
+                'Distributed Protocols',
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2.5 py-1 rounded-md bg-surface border border-white/5 text-[11px] font-mono text-signal-400 flex items-center gap-1.5"
+                >
+                  <span className="w-1 h-1 rounded-full bg-emerald" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Quick Socials Icon Row */}
+            <div className="flex items-center gap-2 pt-1">
+              <span className="text-[10px] font-mono text-signal-500 uppercase tracking-widest mr-1">
+                RADIAL_LINKS:
+              </span>
+              {socials.map((social) => (
+                <a
+                  key={social.id}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  title={`${social.label} (${social.username || ''})`}
+                  className="p-2 rounded-lg bg-surface hover:bg-surface-raised border border-white/10 hover:border-emerald/40 text-signal-400 hover:text-emerald-glow transition-all"
+                >
+                  <IconRenderer name={social.icon || social.platform} size={15} />
+                </a>
+              ))}
+            </div>
           </div>
-        )}
+
+          {/* RIGHT COLUMN: 3D Digital Identity Core */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
+            {/* The 3D Canvas / Fallback */}
+            <div className="w-full relative">
+              <DynamicIdentityScene
+                settings={sceneSettings}
+                onNodeClick={handleNodeClick}
+              />
+            </div>
+
+            {/* Accessible Destination Nodes Bar */}
+            <div className="w-full mt-2 grid grid-cols-3 gap-2 px-1">
+              <a
+                href="https://github.com/ashishsinghbora"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 p-2 rounded-lg bg-surface/70 hover:bg-surface-raised border border-white/5 hover:border-emerald/40 transition-all text-left"
+              >
+                <div className="w-2 h-2 rounded-full bg-emerald-glow group-hover:scale-125 transition-transform" />
+                <div className="min-w-0">
+                  <div className="text-[11px] font-mono font-bold text-signal-200 truncate">GitHub</div>
+                  <div className="text-[9px] font-mono text-signal-500">Repositories</div>
+                </div>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/ashishsinghbora/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 p-2 rounded-lg bg-surface/70 hover:bg-surface-raised border border-white/5 hover:border-violet-lavender/40 transition-all text-left"
+              >
+                <div className="w-2 h-2 rounded-full bg-violet-lavender group-hover:scale-125 transition-transform" />
+                <div className="min-w-0">
+                  <div className="text-[11px] font-mono font-bold text-signal-200 truncate">LinkedIn</div>
+                  <div className="text-[9px] font-mono text-signal-500">Network</div>
+                </div>
+              </a>
+
+              <a
+                href="#projects-section"
+                className="group flex items-center gap-2 p-2 rounded-lg bg-surface/70 hover:bg-surface-raised border border-white/5 hover:border-emerald/40 transition-all text-left"
+              >
+                <div className="w-2 h-2 rounded-full bg-emerald group-hover:scale-125 transition-transform" />
+                <div className="min-w-0">
+                  <div className="text-[11px] font-mono font-bold text-signal-200 truncate">Projects</div>
+                  <div className="text-[9px] font-mono text-signal-500">ETS · ARL</div>
+                </div>
+              </a>
+
+              <a
+                href="#collections-section"
+                className="group flex items-center gap-2 p-2 rounded-lg bg-surface/70 hover:bg-surface-raised border border-white/5 hover:border-violet-lavender/40 transition-all text-left"
+              >
+                <div className="w-2 h-2 rounded-full bg-violet-glow group-hover:scale-125 transition-transform" />
+                <div className="min-w-0">
+                  <div className="text-[11px] font-mono font-bold text-signal-200 truncate">Research</div>
+                  <div className="text-[9px] font-mono text-signal-500">Writing</div>
+                </div>
+              </a>
+
+              <a
+                href="#media-heading-media-youtube"
+                className="group flex items-center gap-2 p-2 rounded-lg bg-surface/70 hover:bg-surface-raised border border-white/5 hover:border-rose-400/40 transition-all text-left"
+              >
+                <div className="w-2 h-2 rounded-full bg-rose-500 group-hover:scale-125 transition-transform" />
+                <div className="min-w-0">
+                  <div className="text-[11px] font-mono font-bold text-signal-200 truncate">YouTube</div>
+                  <div className="text-[9px] font-mono text-signal-500">Techie Ashish</div>
+                </div>
+              </a>
+
+              <a
+                href={profile.website || 'https://ashishsinghbora.github.io/Portfolio/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 p-2 rounded-lg bg-surface/70 hover:bg-surface-raised border border-white/5 hover:border-cyan-400/40 transition-all text-left"
+              >
+                <div className="w-2 h-2 rounded-full bg-cyan-400 group-hover:scale-125 transition-transform" />
+                <div className="min-w-0">
+                  <div className="text-[11px] font-mono font-bold text-signal-200 truncate">Portfolio</div>
+                  <div className="text-[9px] font-mono text-signal-500">Interactive</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
+
+export default ProfileHero;

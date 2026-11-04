@@ -161,6 +161,7 @@ export const DevicePreview: React.FC<DevicePreviewProps> = ({ data }) => {
             <ProfileHero
               profile={cleanData.profile}
               socials={cleanData.socials}
+              sceneSettings={cleanData.appearance?.scene3d}
               onOpenShare={() => {}}
             />
 

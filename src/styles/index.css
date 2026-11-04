@@ -9,18 +9,25 @@
   }
 
   :root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #12171f;
-    --bg-card: #171e28;
-    --bg-card-hover: #1d2633;
+    --bg-primary: #05070D;
+    --bg-secondary: #0B1018;
+    --bg-card: #0B1018;
+    --bg-card-hover: #101925;
+    --bg-raised: #101925;
     --border-primary: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(0, 245, 155, 0.4);
-    --text-primary: #f0f6fc;
-    --text-secondary: #8697ac;
-    --text-muted: #50627a;
-    --accent: #00f59b;
-    --accent-glow: rgba(0, 245, 155, 0.15);
-    --accent-contrast: #07090b;
+    --border-hover: rgba(6, 166, 121, 0.4);
+    --border-emerald: rgba(6, 166, 121, 0.3);
+    --border-violet: rgba(124, 92, 245, 0.3);
+    --text-primary: #F1F5F6;
+    --text-secondary: #A6B0B8;
+    --text-muted: #6b7a8c;
+    --color-primary: #06A679;
+    --color-secondary: #A78BFA;
+    --color-accent: #7C5CF5;
+    --accent: #06A679;
+    --accent-glow: rgba(6, 166, 121, 0.25);
+    --violet-glow: rgba(124, 92, 245, 0.25);
+    --accent-contrast: #05070D;
   }
 
   html.light {
@@ -28,51 +35,53 @@
     --bg-secondary: #f1f5f9;
     --bg-card: #ffffff;
     --bg-card-hover: #f8fafc;
+    --bg-raised: #ffffff;
     --border-primary: rgba(15, 23, 42, 0.12);
-    --border-hover: rgba(16, 185, 129, 0.5);
+    --border-hover: rgba(6, 166, 121, 0.5);
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #94a3b8;
+    --color-primary: #059669;
+    --color-secondary: #7c3aed;
+    --color-accent: #6d28d9;
     --accent: #059669;
-    --accent-glow: rgba(5, 150, 105, 0.12);
+    --accent-glow: rgba(5, 150, 105, 0.15);
+    --violet-glow: rgba(109, 40, 217, 0.15);
     --accent-contrast: #ffffff;
   }
 
   /* Accent color overrides */
-  [data-accent="cyan"] {
-    --accent: #00e5ff;
-    --accent-glow: rgba(0, 229, 255, 0.2);
-  }
-  html.light[data-accent="cyan"] {
-    --accent: #0284c7;
-    --accent-glow: rgba(2, 132, 199, 0.12);
-  }
-
   [data-accent="emerald"] {
-    --accent: #10b981;
-    --accent-glow: rgba(16, 185, 129, 0.2);
+    --accent: #06A679;
+    --accent-glow: rgba(6, 166, 121, 0.3);
   }
   html.light[data-accent="emerald"] {
     --accent: #059669;
-    --accent-glow: rgba(5, 150, 105, 0.12);
+    --accent-glow: rgba(5, 150, 105, 0.15);
+  }
+
+  [data-accent="violet"] {
+    --accent: #7C5CF5;
+    --accent-glow: rgba(124, 92, 245, 0.3);
+  }
+  html.light[data-accent="violet"] {
+    --accent: #7c3aed;
+    --accent-glow: rgba(124, 58, 237, 0.15);
+  }
+
+  [data-accent="mint"] {
+    --accent: #00f59b;
+    --accent-glow: rgba(0, 245, 155, 0.25);
+  }
+
+  [data-accent="cyan"] {
+    --accent: #00e5ff;
+    --accent-glow: rgba(0, 229, 255, 0.25);
   }
 
   [data-accent="amber"] {
     --accent: #fbbf24;
-    --accent-glow: rgba(251, 191, 36, 0.2);
-  }
-  html.light[data-accent="amber"] {
-    --accent: #d97706;
-    --accent-glow: rgba(217, 119, 6, 0.12);
-  }
-
-  [data-accent="violet"] {
-    --accent: #a78bfa;
-    --accent-glow: rgba(167, 139, 250, 0.2);
-  }
-  html.light[data-accent="violet"] {
-    --accent: #7c3aed;
-    --accent-glow: rgba(124, 58, 237, 0.12);
+    --accent-glow: rgba(251, 191, 36, 0.25);
   }
 
   /* Accessibility: Visible focus outline */
@@ -100,53 +109,108 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(150, 150, 150, 0.2);
+    background: rgba(255, 255, 255, 0.12);
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(150, 150, 150, 0.4);
+    background: rgba(6, 166, 121, 0.4);
   }
 }
 
-/* Technical signal animations */
-@keyframes signal-pulse {
+@layer utilities {
+  .glass-card {
+    background: rgba(11, 16, 24, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(6, 166, 121, 0.4);
+    box-shadow: 0 20px 40px -15px rgba(6, 166, 121, 0.2), inset 0 1px 0 rgba(167, 139, 250, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .text-glow-emerald {
+    text-shadow: 0 0 20px rgba(6, 166, 121, 0.5);
+  }
+
+  .text-glow-violet {
+    text-shadow: 0 0 20px rgba(124, 92, 245, 0.5);
+  }
+
+  .border-glow-emerald {
+    box-shadow: 0 0 25px -5px rgba(6, 166, 121, 0.35);
+  }
+
+  .border-glow-violet {
+    box-shadow: 0 0 25px -5px rgba(124, 92, 245, 0.35);
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
+
+/* 3D Core animations */
+@keyframes orbital-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbital-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes float-gentle {
   0%, 100% {
-    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
     transform: scale(1);
   }
   50% {
-    opacity: 0.4;
-    transform: scale(0.92);
+    opacity: 0.9;
+    transform: scale(1.05);
   }
 }
 
-.animate-signal-pulse {
-  animation: signal-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.animate-orbital-spin {
+  animation: orbital-spin 24s linear infinite;
 }
 
-/* Scanline and technical ticks */
-.technical-corner {
-  position: relative;
+.animate-orbital-spin-reverse {
+  animation: orbital-spin-reverse 32s linear infinite;
 }
-.technical-corner::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-  pointer-events: none;
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
 }
-.technical-corner::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  right: -1px;
-  width: 6px;
-  height: 6px;
-  border-bottom: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-  pointer-events: none;
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
 }

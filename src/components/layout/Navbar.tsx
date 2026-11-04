@@ -34,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </a>
 
       <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-signal-950/85 dark:bg-signal-950/85 light:bg-white/90 border-b border-white/10 dark:border-white/10 light:border-slate-200 transition-colors">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
           {/* Brand Mark */}
           <a
             href="#"

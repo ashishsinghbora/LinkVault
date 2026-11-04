@@ -12,7 +12,7 @@ export function EducationSection({ education }: EducationSectionProps) {
   return (
     <section
       aria-labelledby="education-heading"
-      className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-8"
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
     >
       {/* Section header */}
       <div className="flex items-center gap-3 mb-6">

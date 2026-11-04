@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "profile": {
     "name": "Ashish Singh Bora",
-    "headline": "Computer Science & Engineering | Systems Engineering | AI/ML | Open Source",
-    "bio": "Computer Science and Engineering undergraduate focused on systems engineering, Linux, computer vision, AI/ML, open-source software and resource-efficient computing.",
+    "headline": "Engineering the digital frontier.",
+    "bio": "Building systems, exploring intelligence, and contributing to the open-source ecosystem. Computer Science and Engineering undergraduate focused on systems engineering, Linux, computer vision, AI/ML, and resource-efficient computing.",
     "avatar": "",
     "initialsFallback": "AB",
     "location": "India",
@@ -241,7 +241,7 @@
       "status": "Research",
       "tags": ["Reinforcement Learning", "AI/ML", "Python"],
       "icon": "activity",
-      "featured": false,
+      "featured": true,
       "order": 4,
       "enabled": true
     },
@@ -329,9 +329,21 @@
   ],
   "appearance": {
     "defaultTheme": "dark",
-    "accentColor": "mint",
-    "backgroundStyle": "technical-grid",
-    "cardStyle": "bordered"
+    "accentColor": "emerald",
+    "backgroundStyle": "deep-space",
+    "cardStyle": "bordered",
+    "scene3d": {
+      "enabled": true,
+      "animate": true,
+      "motionIntensity": "medium",
+      "quality": "auto",
+      "glowIntensity": "medium",
+      "orbitalSpeed": 1.0,
+      "particleDensity": "medium",
+      "heroLayout": "split",
+      "backgroundStyle": "deep-space",
+      "showFallbackOnly": false
+    }
   },
   "metadata": {
     "title": "Ashish Singh Bora | Digital Signal Deck",

@@ -3,8 +3,8 @@ import type { ThemeMode, AccentColor, BackgroundStyle } from '../types/profile';
 
 export function useTheme(
   initialDefaultTheme: ThemeMode = 'dark',
-  initialAccent: AccentColor = 'mint',
-  initialBackground: BackgroundStyle = 'technical-grid'
+  initialAccent: AccentColor = 'emerald',
+  initialBackground: BackgroundStyle = 'deep-space'
 ) {
   const [themeMode, setThemeMode] = useState<ThemeMode>(() => {
     if (typeof window === 'undefined') return initialDefaultTheme;

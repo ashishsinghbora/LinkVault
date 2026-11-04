@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({
 
   return (
     <footer className="w-full mt-20 border-t border-white/10 dark:border-white/10 light:border-slate-200 bg-signal-950/90 dark:bg-signal-950/90 light:bg-slate-50 transition-colors">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex flex-col items-center justify-center text-center space-y-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center justify-center text-center space-y-6">
         {/* System telemetry bar */}
         <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3 py-1 rounded-full max-w-full bg-signal-850 dark:bg-signal-850 light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 text-[11px] font-mono text-signal-400">
           <CheckCircle2 className="w-3.5 h-3.5 text-mint-400 flex-shrink-0" />

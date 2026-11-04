@@ -37,7 +37,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile, showGpg
     <section
       id="contact-section"
       aria-labelledby="contact-heading"
-      className="w-full max-w-3xl mx-auto px-4 sm:px-6 my-10"
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-12"
     >
       <div className="flex items-center gap-2 mb-4">
         <div className="p-1.5 rounded-md bg-signal-800 text-signal-300 border border-white/10">

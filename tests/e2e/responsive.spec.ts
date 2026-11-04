@@ -12,7 +12,7 @@ const VIEWPORTS = [
   { name: 'laptop-1280', width: 1280, height: 800, isScreenshot: true },
   { name: 'laptop-1440', width: 1440, height: 900 },
   { name: 'desktop-1920', width: 1920, height: 1080, isScreenshot: true },
-  { name: 'desktop-2560', width: 2560, height: 1440 },
+  { name: 'desktop-2560', width: 2560, height: 1440, isScreenshot: true },
 ];
 
 test.describe('Responsive Layout & No Horizontal Overflow', () => {
@@ -89,7 +89,7 @@ test.describe('Interactive Features', () => {
     await page.goto('/');
 
     // Click Share Profile
-    const shareBtn = page.locator('button:has-text("Share Profile")').first();
+    const shareBtn = page.locator('button[aria-label*="hare"], button:has-text("Share")').first();
     await shareBtn.click();
 
     // Modal should be visible

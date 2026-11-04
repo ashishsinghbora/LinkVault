@@ -64,7 +64,7 @@ export const LinkCollections: React.FC<LinkCollectionsProps> = ({
     <section
       id="collections-section"
       aria-labelledby="collections-heading"
-      className="w-full max-w-3xl mx-auto px-4 sm:px-6 my-8 space-y-6"
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-12 space-y-6"
     >
       <div className="flex items-center gap-2 mb-2">
         <div className="p-1.5 rounded-md bg-signal-800 text-signal-300 border border-white/10">

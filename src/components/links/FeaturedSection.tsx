@@ -20,7 +20,7 @@ export const FeaturedSection: React.FC<FeaturedSectionProps> = ({
     <section
       id="featured-section"
       aria-labelledby="featured-heading"
-      className="w-full max-w-3xl mx-auto px-4 sm:px-6 my-8"
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-10"
     >
       <div className="flex items-center gap-2 mb-4">
         <div className="p-1.5 rounded-md bg-mint-500/10 text-mint-400 border border-mint-500/20">

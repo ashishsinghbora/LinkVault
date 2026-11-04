@@ -1,8 +1,21 @@
 export type AvailabilityStatus = 'available' | 'busy' | 'stealth' | 'custom';
 export type ThemeMode = 'dark' | 'light' | 'system';
 export type AccentColor = 'mint' | 'cyan' | 'emerald' | 'amber' | 'violet';
-export type BackgroundStyle = 'technical-grid' | 'dots' | 'minimal' | 'circuit';
+export type BackgroundStyle = 'deep-space' | 'orbital-glow' | 'technical-grid' | 'dots' | 'minimal' | 'circuit';
 export type CardStyle = 'bordered' | 'technical' | 'minimal';
+
+export interface Scene3DSettings {
+  enabled: boolean;
+  animate: boolean;
+  motionIntensity: 'low' | 'medium' | 'high';
+  quality: 'auto' | 'performance' | 'high';
+  glowIntensity: 'subtle' | 'medium' | 'vibrant';
+  orbitalSpeed: number; // 0.2 to 2.5
+  particleDensity: 'low' | 'medium' | 'high';
+  heroLayout: 'split' | 'centered';
+  backgroundStyle: 'deep-space' | 'orbital-glow' | 'technical-grid' | 'minimal';
+  showFallbackOnly?: boolean;
+}
 
 export interface SocialLink {
   id: string;
@@ -127,6 +140,7 @@ export interface ProfileData {
     accentColor: AccentColor;
     backgroundStyle: BackgroundStyle;
     cardStyle?: CardStyle;
+    scene3d?: Scene3DSettings;
   };
   metadata: {
     title: string;

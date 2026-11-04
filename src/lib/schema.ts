@@ -113,6 +113,19 @@ export const MediaSectionSchema = z.object({
   enabled: z.boolean().default(true),
 });
 
+export const Scene3DSettingsSchema = z.object({
+  enabled: z.boolean().default(true),
+  animate: z.boolean().default(true),
+  motionIntensity: z.enum(['low', 'medium', 'high']).default('medium'),
+  quality: z.enum(['auto', 'performance', 'high']).default('auto'),
+  glowIntensity: z.enum(['subtle', 'medium', 'vibrant']).default('medium'),
+  orbitalSpeed: z.number().min(0.1).max(3.0).default(1.0),
+  particleDensity: z.enum(['low', 'medium', 'high']).default('medium'),
+  heroLayout: z.enum(['split', 'centered']).default('split'),
+  backgroundStyle: z.enum(['deep-space', 'orbital-glow', 'technical-grid', 'minimal']).default('deep-space'),
+  showFallbackOnly: z.boolean().optional().default(false),
+});
+
 export const ProfileDataSchema = z.object({
   schemaVersion: z.number().int().default(1),
   profile: z.object({
@@ -141,14 +154,38 @@ export const ProfileDataSchema = z.object({
   mediaSections: z.array(MediaSectionSchema).optional().default([]),
   appearance: z.object({
     defaultTheme: z.enum(['dark', 'light', 'system']).default('dark'),
-    accentColor: z.enum(['mint', 'cyan', 'emerald', 'amber', 'violet']).default('mint'),
-    backgroundStyle: z.enum(['technical-grid', 'dots', 'minimal', 'circuit']).default('technical-grid'),
+    accentColor: z.enum(['mint', 'cyan', 'emerald', 'amber', 'violet']).default('emerald'),
+    backgroundStyle: z.enum(['deep-space', 'orbital-glow', 'technical-grid', 'dots', 'minimal', 'circuit']).default('deep-space'),
     cardStyle: z.enum(['bordered', 'technical', 'minimal']).optional().default('bordered'),
+    scene3d: Scene3DSettingsSchema.optional().default({
+      enabled: true,
+      animate: true,
+      motionIntensity: 'medium',
+      quality: 'auto',
+      glowIntensity: 'medium',
+      orbitalSpeed: 1.0,
+      particleDensity: 'medium',
+      heroLayout: 'split',
+      backgroundStyle: 'deep-space',
+      showFallbackOnly: false,
+    }),
   }).default({
     defaultTheme: 'dark',
-    accentColor: 'mint',
-    backgroundStyle: 'technical-grid',
+    accentColor: 'emerald',
+    backgroundStyle: 'deep-space',
     cardStyle: 'bordered',
+    scene3d: {
+      enabled: true,
+      animate: true,
+      motionIntensity: 'medium',
+      quality: 'auto',
+      glowIntensity: 'medium',
+      orbitalSpeed: 1.0,
+      particleDensity: 'medium',
+      heroLayout: 'split',
+      backgroundStyle: 'deep-space',
+      showFallbackOnly: false,
+    },
   }),
   metadata: z.object({
     title: z.string().min(1, 'Page title is required'),
@@ -355,9 +392,21 @@ export const DEFAULT_PROFILE: ProfileData = {
   mediaSections: [],
   appearance: {
     defaultTheme: "dark",
-    accentColor: "mint",
-    backgroundStyle: "technical-grid",
+    accentColor: "emerald",
+    backgroundStyle: "deep-space",
     cardStyle: "bordered",
+    scene3d: {
+      enabled: true,
+      animate: true,
+      motionIntensity: "medium",
+      quality: "auto",
+      glowIntensity: "medium",
+      orbitalSpeed: 1.0,
+      particleDensity: "medium",
+      heroLayout: "split",
+      backgroundStyle: "deep-space",
+      showFallbackOnly: false,
+    },
   },
   metadata: {
     title: "Ashish Singh Bora | Digital Signal Deck",
